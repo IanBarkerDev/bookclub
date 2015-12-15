@@ -405,7 +405,7 @@ app.get("/search/results/ISBN/:ISBN", function(req, res) {
   var ISBN = req.params.ISBN;
   Book.find({ISBN: ISBN}, function(err, doc) {
     if(err) throw err;
-    res.render("search-results", {username: req.cookies.username, results: doc})
+    res.render("search-results", {username: req.cookies.username, results: doc, book: true})
   })
 })
 
@@ -419,7 +419,7 @@ app.get("/search/results/author/:author", function(req, res) {
   var author = req.params.author;
   Book.find({author: author}, function(err, doc) {
     if(err) throw err;
-    res.render("search-results", {username: req.cookies.username, results: doc})
+    res.render("search-results", {username: req.cookies.username, results: doc, book: true})
   })
 })
 
@@ -431,9 +431,9 @@ app.post("/user_search/user", function(req, res) {
 
 app.get("/search/results/user/:user", function(req, res) {
   var user = req.params.user;
-  Book.find({user: user}, function(err, doc) {
+  User.find({username: user}, function(err, users) {
     if(err) throw err;
-    res.render("search-results", {username: req.cookies.username, results: doc})
+    res.render("search-results", {username: req.cookies.username, results: users, book: false});
   })
 })
 

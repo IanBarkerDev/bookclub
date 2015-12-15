@@ -20,6 +20,11 @@ head
          $(".add-to-collection").on("click", function() {
             userAdd($(this).parent().attr("id").slice(6), username);
          })
+         
+         $(".search-result-username").on("click", function() {
+            var user = $(this).parent().attr("id").slice(6);
+            window.location.pathname = "/user/" + user;
+         })
       })
 
 
@@ -62,12 +67,17 @@ body
       div.container
          h1 Search Results
          div.search-results
-            each val, index in results
-               div.search-result(id="result" + val.ISBN)
-                  div.clickable
-                     img.book-img(src=val.img, alt=val.title + " Image")
-                     p.book-title= val.title
-                  button.btn.btn-default.add-to-collection Add to Collection
+            if(book)
+               each val, index in results
+                  div.search-result(id="result" + val.ISBN)
+                     div.clickable
+                        img.book-img(src=val.img, alt=val.title + " Image")
+                        p.book-title= val.title
+                     button.btn.btn-default.add-to-collection Add to Collection
+            else
+               each val, index in results
+                  div.search-result(id="result" + val.username)
+                     button.btn.btn-default.search-result-username= val.username
                   
    footer
       p.footer &copy; 2015 Book Club
