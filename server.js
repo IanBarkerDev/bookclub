@@ -398,7 +398,7 @@ app.get("/book/:ISBN", function(req, res) {
 // User searches the global collection via ISBN
 app.post("/user_search/ISBN", function(req, res) {
   var ISBN = req.body.data;
-  res.json({url: "/search/results/ISBN" + ISBN});
+  res.json({url: "/search/results/ISBN/" + ISBN});
 })
 
 app.get("/search/results/ISBN/:ISBN", function(req, res) {
