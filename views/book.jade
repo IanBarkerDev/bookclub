@@ -1,0 +1,85 @@
+head
+   title #{ISBN}
+
+   script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js")
+   link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7", crossorigin="anonymous")
+   script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js", integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS", crossorigin="anonymous")   script(src="/js/navbar.js")
+   
+   script(src="/js/navbar.js")
+   script(src="/js/serv-int.js")
+   
+   script.
+      var username = !{JSON.stringify(username)};
+   
+   script(type="text/javascript").
+      $(document).ready(function() {
+         $("#nav-logout").on("click", function() {
+            userLogout();
+         })
+         
+         $(".book-add-user-collection").on("click", function() {
+            var isbn = $(this).parent().attr("id");
+            userAdd(isbn, username);
+         })
+      })
+
+
+body
+   nav.navbar.navbar-default.navbar-fixed-top
+      div.container
+         div.navbar-header
+            button.navbar-toggle.collapsed(type="button", data-toggle="collapse", data-target="#main-menu", aria-expanded="false")
+               span.sr-only Toggle Navigation
+               span.icon-bar
+               span.icon-bar
+               span.icon-bar
+            a.navbar-brand(href="/user/" + username) Book Club
+         div.navbar-collapse.navbar-right.collapse#main-menu
+            ul.nav.navbar-nav
+               li
+                  a.btn.btn-default#my-profile-nav(href="/user/" + username) My Profile
+               li.dropdown
+                  a.dropdown-toggle(href="#", data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false")
+                     | Search
+                     span.caret
+                  ul.dropdown-menu
+                     li
+                        form.navbar-form#nav-user-search(role="search", action="javascript:userSearch()")
+                           div.form-group
+                              input.form-control#nav-user-search-input(type="text", placeholder="Search")
+                              label.form-label(for="nav-isbn") ISBN:
+                              input.form-input#nav-isbn.checked(type="radio", name="nav-form-radio", value="ISBN")
+                              label.form-label(for="nav-author") Author:
+                              input.form-input#nav-author(type="radio", name="nav-form-radio", value="author")
+                              label.form-label(for="nav-user") User:
+                              input.form-input#nav-user(type="radio", name="nav-form-radio", value="user")
+                           button.btn.btn-default(type="submit") Search
+         ul.nav.navbar.navbar-right
+            li
+               button.btn.btn-default#nav-logout(type="button") Log Out
+
+
+   div.container-fluid#book
+      div.container
+         div.book-information(id=ISBN)
+            div.row
+               div.col-md-4
+                  img.book-img(src=img, alt=title + " Image")
+               div.col-md-8
+                  h4.book-title #{Title}
+                  h6.book-author #{Author}
+            div.row
+               div.col-md-12
+                  button.btn.btn-default.book-more-info-button(type="button") More Info
+                  div.book-more-info
+                     each val in genre
+                        span.book-genre= val 
+                     p.book-published Published by #{published_by} on #{published_date}
+                     p.book-pages #{pages} pages
+                     p.book-ISBN #{ISBN}
+            button.btn.btn-default.book-add-user-collection Add to Collection
+
+
+   footer
+      p.footer &copy; 2015 Book Club
+

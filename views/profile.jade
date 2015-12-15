@@ -1,0 +1,253 @@
+head
+    title #{ISBN}
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js")
+    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7", crossorigin="anonymous")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js", integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS", crossorigin="anonymous")
+    
+    script(src="/js/navbar.js")
+    script(src="/js/serv-int.js")
+    script.
+       var username = !{JSON.stringify(username)}
+    script(type="text/javascript").
+        $(document).ready(function () {
+        
+         $("#nav-logout").on("click", function() {
+            userLogout();
+         })
+
+           $("#admin-edit-genre-button").on("click", function() {
+               genre.push($("#adminEditGenre").val());
+
+              var html = "<button class='btn btn-default admin-edit-genre-delete' id='genre" + (genre.length - 1) + "'>" + $("#adminEditGenre").val() + "</button>";
+              $(".admin-edit-genre").append(html);
+           })
+
+           $(".admin-edit-genre").on("click", ".admin-edit-genre-delete", function() {
+               var index = +$(this).attr("id").slice(5);
+              genre.splice(index, 1);
+              $(".admin-edit-genre").children("#genre" + index).remove();
+           })
+           
+           $("#admin-add-genre-button").on("click", function() {
+               genre.push($("#adminAddGenre").val());
+
+              var html = "<button class='btn btn-default admin-add-genre-delete' id='genre" + (genre.length - 1) + "'>" + $("#adminAddGenre").val() + "</button>";
+              $(".admin-add-genre").append(html);
+           })
+
+           $(".admin-add-genre").on("click", ".admin-add-genre-delete", function() {
+               var index = +$(this).attr("id").slice(5);
+              genre.splice(index, 1);
+              $(".admin-add-genre").children("#genre" + index).remove();
+           })
+           
+           $(".clickable").on("click", function() {
+              var isbn = $(this).parent().attr("id");
+              // user
+              if(isbn.charAt(0) === "u") {
+                 isbn = isbn.slice(4);
+                 getBookPage(isbn);
+              } else {
+              
+              // admin
+                 if(isbn.charAt(0) === "a") {
+                    isbn = isbn.slice(5);
+                    getBookPage(isbn);
+                 }
+              }
+           })
+           
+           $(".trade_req").on("click", function() {
+              var elem = $(this);
+              $.ajax({
+                 url: "/userrequest",
+                 type: "post",
+                 dataType: "json",
+                 data: {
+                    user_own: username,
+                    isbn: $(this).parent().attr("id").slice(4)
+                 },
+                 
+                 complete: function(data) {
+                    if(data.responseJSON.data === "success") {
+                       $(elem).html("Trade Request Sent");
+                       $(elem).prop("disabled", true);
+                    }
+                 }
+              })
+           })
+           
+           $(".admin-book-collection").on("click", ".edit-book", function() {
+              var isbn = $(this).parent().attr("id").slice(5);
+              adminSearchISBN(isbn);
+           })
+           
+           $("#settings").on("click", function() {
+              window.location.pathname = "/user/" + username + "/settings";
+           })
+           
+        });
+body
+   nav.navbar.navbar-default.navbar-fixed-top
+      div.container
+         div.navbar-header
+            button.navbar-toggle.collapsed(type="button", data-toggle="collapse", data-target="#main-menu", aria-expanded="false")
+               span.sr-only Toggle Navigation
+               span.icon-bar
+               span.icon-bar
+               span.icon-bar
+            a.navbar-brand(href="/user/" + username) Book Club
+         div.navbar-collapse.navbar-right.collapse#main-menu
+            ul.nav.navbar-nav
+               li
+                  a.btn.btn-default#my-profile-nav(href="/user/" + username) My Profile
+               li.dropdown
+                  a.dropdown-toggle(href="#", data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false")
+                     | Search
+                     span.caret
+                  ul.dropdown-menu
+                     li
+                        form.navbar-form#nav-user-search(role="search", action="javascript:userSearch()")
+                           div.form-group
+                              input.form-control#nav-user-search-input(type="text", placeholder="Search")
+                              label.form-label(for="nav-isbn") ISBN:
+                              input.form-input#nav-isbn.checked(type="radio", name="nav-form-radio", value="ISBN")
+                              label.form-label(for="nav-author") Author:
+                              input.form-input#nav-author(type="radio", name="nav-form-radio", value="author")
+                              label.form-label(for="nav-user") User:
+                              input.form-input#nav-user(type="radio", name="nav-form-radio", value="user")
+                           button.btn.btn-default(type="submit") Search
+         ul.nav.navbar.navbar-right
+            li
+               button.btn.btn-default#nav-logout(type="button") Log Out
+
+
+    div.container-fluid#book-collection
+       div.container
+          h4 Book Collection
+          if(!isAdmin)
+             button.btn.btn-default#settings Settings
+             if(book_collectionVisible)
+                div.user-book-collection
+                   each val in book_collection
+                      div.user-book(id="user" + val.book.ISBN)
+                         div.clickable
+                            img.book-img(src=val.book.img, alt=val.book.title + " Image")
+                            p.book-title= val.book.title
+                         if(username !== user_signed)
+                            button.btn.btn-default.trade_req(type="button") Request Trade
+                         else
+                            button.trade-req-cirle= val.trade_req.length
+             else
+                p.user-book-collection#private-collection #{username}'s collection is private.
+
+          else
+             div.admin-book-collection
+                button.btn.btn-default#admin-search-toggle(type="button") Search
+                button.btn.btn-default#admin-new(type="button", data-toggle="modal", data-target="#addModal") Add Book
+
+                div.admin-book-collection-render
+                   each val in book_collection
+                      div.admin-book(id="admin" + val.ISBN)
+                         div.clickable
+                            img.book-img(src=val.img, alt=val.title + " Image")
+                            p.book-title= val.title
+                         button.btn.btn-default.edit-book(type="button", data-toggle="modal", data-target="#editModal") Edit Book
+
+                div.admin-book-collection-search
+                   form#adminSearch(action="javascript:adminSearch()")
+                      input.form-input#admin-search-input(type="text", placeholder="Search")
+                      label.form-label(for="admin-search-radio-ISBN") ISBN
+                      input.form-input-radio#admin-search-radio-ISBN(name="admin-search-radio", value="ISBN", type="radio", checked)
+                      label.form-label(for="admin-search-radio-author") Author
+                      input.form-input-radio#admin-search-radio-author(name="admin-search-radio", value="author", type="radio")
+                      button.btn.btn-default(type="submit") Search
+
+                div.admin-book-collection-results
+                   // appended results
+          
+          
+          
+    // add book                
+   div.modal.fade#addModal(tabindex="-1", role="dialog", aria-labelledby="addModalLabel")
+       div.modal-dialog(role="document")
+          div.modal-header
+             button.close(type="button", data-dismiss="modal", aria-label="Close")
+                span(aria-hidden="true") &times;
+             h4.modal-title#addModalLabel Add Book
+          div.modal-body
+             form#adminAdd(action="javascript:adminAddBook()")
+                
+                label.form-label(for="adminAddISBN") ISBN
+                input.form-input#adminAddISBN(type="text", name="adminAddISBN")
+             
+                label.form-label(for="adminAddTitle") Title
+                input.form-input#adminAddTitle(type="text", name="adminAddTitle")
+
+                label.form-label(for="adminAddAuthor") Author
+                input.form-input#adminAddAuthor(type="text", name="adminAddAuthor")
+
+                label.form-label(for="adminAddImg") Image
+                input.form-input#adminAddImg(type="text", name="adminAddImg")
+
+                label.form-label(for="adminAddGenre") Genre
+                input.form-input#adminAddGenre(type="text", name="adminAddGenre")
+                button.btn.btn-default#admin-add-genre-button(type="button") Add Genre
+
+                div.admin-add-genre
+
+                label.form-label(for="adminAddPages") Pages
+                input.form-input#adminAddPages(type="text", name="adminAddPages")
+
+                label.form-label(for="adminAddPubBy") Published By
+                input.form-input#adminAddPubBy(type="text", name="adminAddPubBy")
+
+                label.form-label(for="adminAddPubDate") Published On
+                input.form-input#adminAddPubDate(type="text", name="adminAddPubDate")
+
+                button.btn.btn-default#add-submit(type="submit") Add Book
+
+
+    // edit book
+   div.modal.fade#editModal(tabindex="-1", role="dialog", aria-labelledby="editModalLabel")
+       div.modal-dialog(role="document")
+          div.modal-header
+             button.close(type="button", data-dismiss="modal", aria-label="Close")
+                span(aria-hidden="true") &times;
+             h4.modal-title#editModalLabel Edit Book
+          div.modal-body
+             form#adminEdit(action="javascript:adminEditBook()")
+                
+                label.form-label(for="adminEditISBN") ISBN
+                input.form-input#adminEditISBN(type="text", name="adminEditISBN")
+             
+                label.form-label(for="adminEditTitle") Title
+                input.form-input#adminEditTitle(type="text", name="adminEditTitle")
+
+                label.form-label(for="adminEditAuthor") Author
+                input.form-input#adminEditAuthor(type="text", name="adminEditAuthor")
+
+                label.form-label(for="adminEditImg") Image
+                input.form-input#adminEditImg(type="text", name="adminEditImg")
+
+                label.form-label(for="adminEditGenre") Genre
+                input.form-input#adminEditGenre(type="text", name="adminEditGenre")
+                button.btn.btn-default#admin-edit-genre-button(type="button") Add Genre
+
+                div.admin-edit-genre
+
+                label.form-label(for="adminEditPages") Pages
+                input.form-input#adminEditPages(type="text", name="adminEditPages")
+
+                label.form-label(for="adminEditPubBy") Published By
+                input.form-input#adminEditPubBy(type="text", name="adminEditPubBy")
+
+                label.form-label(for="adminEditPubDate") Published On
+                input.form-input#adminEditPubDate(type="text", name="adminEditPubDate")
+
+                button.btn.btn-default#edit-submit(type="submit") Edit Book
+
+                
+
+    footer
+       p.footer &copy; 2015 Book Club

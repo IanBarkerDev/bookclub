@@ -1,0 +1,15 @@
+{
+  "name": "bookclub",
+  "version": "1.0.0",
+  "description": "A website where users can display their book collection and trade books.",
+  "main": "server.js",
+  "repository": "",
+  "author": "Ian Barker",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "express": "^3.2.6",
+    "jade": "^1.11.0",
+    "mongodb": "^2.1.0",
+    "mongoose": "^4.2.10"
+  }
+}
