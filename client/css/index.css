@@ -1,0 +1,67 @@
+body {
+    text-align: center;
+    background-color: purple;
+    color: white;
+}
+
+h1 {
+    font-size: 30px;
+    text-decoration: underline;
+}
+
+.login-signup-box {
+    margin: 30px 20px;
+    padding: 40px;
+    height: 300px;
+}
+
+.login-signup-links {
+    border: 5px solid white;
+    border-radius: 5px;
+    width: 200px;
+    height: 150px;
+    margin: 15px auto;
+    padding: 50px 0;
+}
+
+.link {
+    background-color: inherit;
+    border: none;
+    color: white;
+    font-size: 20px;
+}
+
+.link:hover {
+    background-color: white;
+    color: purple;
+}
+
+#features {
+    height: 400px;
+}
+
+
+
+.feature {
+    border: 3px solid navy;
+    border-radius: 5px;
+    background-color: navy;
+    min-height: 200px;
+    padding: 30px;
+    font-size: 17px;
+}
+
+.feature i {
+    margin: 5px auto 25px auto;
+    font-size: 40px;
+}
+
+footer {
+    width: 200px;
+    margin: 100px auto 0 auto;
+    text-align: center;
+    font-size: 10px;
+    font-style: italic;
+    border-top: 1px solid grey;
+    color: grey;
+}

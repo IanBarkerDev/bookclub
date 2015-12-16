@@ -1,18 +1,35 @@
 head
    title Welcome to Book Club
    script(src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js")
-
+   link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7", crossorigin="anonymous")
+   script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js", integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS", crossorigin="anonymous")   script(src="/js/navbar.js")
+   link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css")
+   link(rel="stylesheet", href="/css/index.css")
+   
+   
 body
-   h1 Book Club
-   div.container
-      div.login-signup-box
-         a.btn.btn-default(href="/login.html") Log In
-         a.btn.btn-default(href="/signup.html") Signup
-      div.features
+   div.container-fluid#pathing
+      div.container
+      h1.text-center Welcome to Book Club
+         div.col-lg-12.login-signup-box
+            div.login-signup-links
+               a.btn.btn-default.link#login-button(href="/login.html") Log In
+               a.btn.btn-default.link#signup-button(href="/signup.html") Sign Up
+   div.container-fluid#features
+      div.container
          div.row
-            div.col-md-6
-               p.feature Use Book Club to display your collection online!
-               p.feature Look at your friends collections!
-            div.col-md-6
-               p.feature Send trade requests for other user's books!
-               p.feature Book collection updated regularly!
+            div.col-lg-6.feature
+               i.fa.fa-usd
+               p.text-center Use Book Club to display your collection online!
+            div.col-lg-6.feature
+               i.fa.fa-bookmark
+               p.text-center Look at your friends' collections too!
+         div.row
+            div.col-lg-6.feature
+               i.fa.fa-arrow-right
+               p.text-center Send trade requests for other user's books!
+            div.col-lg-6.feature
+               i.fa.fa-check
+               p.text-center Book collection updated regularly!
+   footer
+      p.footer &copy; 2015 Book Club
