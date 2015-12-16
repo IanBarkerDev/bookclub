@@ -5,8 +5,12 @@ head
    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css", integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7", crossorigin="anonymous")
    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js", integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS", crossorigin="anonymous")   script(src="/js/navbar.js")
    
+   // navbar css
+   link(rel="stylesheet", href="/css/navbar.css")
+   link(rel="stylesheet", href="/css/settings.css")
+   
    script(src="/js/navbar.js")
-   //script(src="/js/serv-int.js")
+   script(src="/js/serv-int.js")
    
    script.
       var username = !{JSON.stringify(username)};
@@ -32,47 +36,53 @@ body
          div.navbar-collapse.navbar-right.collapse#main-menu
             ul.nav.navbar-nav
                li
-                  a.btn.btn-default#my-profile-nav(href="/user/" + username) My Profile
+                  a.btn.btn-default.navbar-link#my-profile-nav(href="/user/" + username) My Profile
                li.dropdown
-                  a.dropdown-toggle(href="#", data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false")
+                  a.dropdown-toggle.navbar-link(href="#", data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false")
                      | Search
                      span.caret
                   ul.dropdown-menu
                      li
                         form.navbar-form#nav-user-search(role="search", action="javascript:userSearch()")
-                           div.form-group
-                              input.form-control#nav-user-search-input(type="text", placeholder="Search")
-                              label.form-label(for="nav-isbn") ISBN:
-                              input.form-input#nav-isbn.checked(type="radio", name="nav-form-radio", value="ISBN")
-                              label.form-label(for="nav-author") Author:
-                              input.form-input#nav-author(type="radio", name="nav-form-radio", value="author")
-                              label.form-label(for="nav-user") User:
-                              input.form-input#nav-user(type="radio", name="nav-form-radio", value="user")
-                           button.btn.btn-default(type="submit") Search
-         ul.nav.navbar.navbar-right
-            li
-               button.btn.btn-default#nav-logout(type="button") Log Out
+                           input.form-control#nav-user-search-input(type="text")
+                           div.nav-form-options
+                              label.form-label(for="nav-isbn") ISBN: 
+                              input.form-input-radio#nav-isbn.checked(type="radio", name="nav-form-radio", value="ISBN")
+                              label.form-label(for="nav-author") Author: 
+                              input.form-input-radio#nav-author(type="radio", name="nav-form-radio", value="author")
+                              label.form-label(for="nav-user") User: 
+                              input.form-input-radio#nav-user(type="radio", name="nav-form-radio", value="user")
+                              button.btn.btn-default#nav-form-submit(type="submit") Search
+               li
+                  button.btn.btn-default.navbar-link#nav-logout(type="button") Log Out
+
 
 
    div.container-fluid#change-password
       div.container
          div.panel.panel-default
             div.panel-heading
-               h3.panel-title Change Password
+               h2.panel-title Change Password
             div.panel-body
                form.form-group(action="/user/" + username + "/new_password", method="post")
                   label.form-label(for="current_password") Current Password
+                  br
                   if(issue === "current")
                      input.form-input.form-input-error#current_password(type="password", name="current_password", placeholder="Password incorrect")
                   else
                      input.form-input#current_password(type="password", name="current_password")
+                  br
                   label.form-label(for="new_password") New Password
+                  br
                   input.form-input#new_password(type="password", name="password")
+                  br
                   label.form-label(for="confirm_password") Confirm Password
+                  br
                   if(issue === "confirm")
-                     input.form-input.form-label-error#confirm_password(type="password", name="confirm_password", placeholder="Password doesn't match")
+                     input.form-input.form-input-error#confirm_password(type="password", name="confirm_password", placeholder="Password doesn't match")
                   else
                      input.form-input#confirm_password(type="password", name="confirm_password")
+                  br
 
                   button.btn.btn-default(type="submit") Change Password
 
@@ -80,47 +90,53 @@ body
       div.container
          div.panel.panel-default
             div.panel-heading
-               h3.panel-title Change Information
+               h2.panel-title Change Information
             div.panel-body
                form.form-group(action="/user/" + username + "/update_profile", method="post")
                   // input text
                   label.form-label(for="name") Name
+                  br
                   if(name)
                      input.form-input#name(type="text", value="#{name}", name="name")
                   else
                      input.form-input#name(type="text", name="name")
-                     
+                  br
+                  
                   label.form-label(for="city") City
+                  br
                   if(city)
                      input.form-input#city(type="text", value="#{city}", name="city")
                   else
                      input.form-input#city(type="text", name="city")
-                     
+                  br
+                  
                   label.form-label(for="state") State
+                  br
                   if(state)
                      input.form-input#state(type="text", value="#{state}", name="state")
                   else
                      input.form-input#state(type="text", name="state")
 
+                  br
                   // radios
                   label.form-label(for="private_email") Private Email
                   if(!emailVisible)
-                     input.form-input#private_email(type="checkbox", name="privacy[]", value="email", checked)
+                     input.form-input.form-input-checkbox#private_email(type="checkbox", name="privacy[]", value="email", checked)
                   else
-                     input.form-input#private_email(type="checkbox", name="privacy[]", value="email")
+                     input.form-input.form-input-checkbox#private_email(type="checkbox", name="privacy[]", value="email")
                      
                   label.form-label(for="private_profile") Private Profile
                   if(!personalVisible)
-                     input.form-input#private_profile(type="checkbox", name="privacy[]", value="profile", checked)
+                     input.form-input.form-input-checkbox#private_profile(type="checkbox", name="privacy[]", value="profile", checked)
                   else
-                     input.form-input#private_profile(type="checkbox", name="privacy[]", value="profile")
+                     input.form-input.form-input-checkbox#private_profile(type="checkbox", name="privacy[]", value="profile")
                      
                   label.form-label(for="private_collection") Private Collection
                   if(!book_collectionVisible)
-                     input.form-input#private_collection(type="checkbox", name="privacy[]", value="collection", checked)
+                     input.form-input.form-input-checkbox#private_collection(type="checkbox", name="privacy[]", value="collection", checked)
                   else
-                     input.form-input#private_collection(type="checkbox", name="privacy[]", value="collection")
-
+                     input.form-input.form-input-checkbox#private_collection(type="checkbox", name="privacy[]", value="collection")
+                  br
                   button.btn.btn-default(type="submit") Change Information
 
    footer
