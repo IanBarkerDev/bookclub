@@ -6,6 +6,7 @@ head
     
     script(src="/js/navbar.js")
     script(src="/js/serv-int.js")
+    link(rel="stylesheet", href="/css/profile.css")
     script.
        var username = !{JSON.stringify(username)}
     script(type="text/javascript").
@@ -92,9 +93,11 @@ body
 
     div.container-fluid#book-collection
        div.container
-          h4 Book Collection
-          if(!isAdmin)
+          h2#name-profile
+             | #{username}'s Profile
              button.btn.btn-default#settings Settings
+          if(!isAdmin)
+             h4 Book Collection
              if(book_collectionVisible)
                 div.user-book-collection
                    each val in book_collection
@@ -103,9 +106,10 @@ body
                             img.book-img(src=val.book.img, alt=val.book.title + " Image")
                             p.book-title= val.book.title
                          if(username !== user_signed)
-                            button.btn.btn-default.trade_req(type="button") Request Trade
+                            button.btn.btn-default.book-button.trade_req(type="button") Request Trade
                          else
-                            button.trade-req-cirle= val.trade_req.length
+                            button.btn.btn-default.book-button.remove_book(type="button") Remove Book
+                            button.trade-req-circle= val.trade_req.length
              else
                 p.user-book-collection#private-collection #{username}'s collection is private.
 
