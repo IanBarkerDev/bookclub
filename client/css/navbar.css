@@ -2,9 +2,10 @@
 
 nav {
     font-size: 16px;
-    padding: 10px 0;
+    padding: 10px 0 5px 0;
     background-color: #f5f5f5;
     border-bottom: 1px solid #e5e5e5;
+    height: 69px;
 }
 
 .navbar-brand {
@@ -16,6 +17,10 @@ nav {
     border: none;
     font-size: 16px;
     background-color: inherit;
+}
+
+#my-profile-nav {
+    color: #333333;
 }
 
 #nav-logout {
@@ -33,11 +38,16 @@ nav {
     width: 300px;
 }
 
+.navbar-form-choices {
+    width: 300px;
+    padding: 0;
+}
+
 #nav-user-search-input {
     width: 258px;
 }
 
-.form-input-radio {
+.nav-form-input-radio {
     margin: 0 5px !important;
 }
 

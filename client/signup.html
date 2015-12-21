@@ -11,18 +11,18 @@
     <div class="container">
         <div class="login-signup-page">
             <h3>Sign Up</h3>
-            <form class="form">
+            <form class="form" action="/signup" method="post">
                 <label class="form-label" for="username">Username:</label>
-                <input class="form-input" id="username" type="text">
+                <input class="form-input" id="username" type="text" name="username">
                 <br>
                 <label class="form-label" for="email">Email: </label>
-                <input class="form-input" id="email" type="email">
+                <input class="form-input" id="email" type="email" name="email">
                 <br>
                 <label class="form-label" for="password">Password:</label>
-                <input class="form-input" id="password" type="password">
+                <input class="form-input" id="password" type="password" name="password">
                 <br>
                 <label class="form-label" for="password_con">Confirm:</label>
-                <input class="form-input" id="password_con" type="password">
+                <input class="form-input" id="password_con" type="password" name="password_con">
                 <br>
                 <button type="submit" class="form-submit btn btn-default">Sign Up</button>
             </form>

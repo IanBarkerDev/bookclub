@@ -1,3 +1,5 @@
+link(rel="stylesheet", href="/css/navbar.css")
+
 nav.navbar.navbar-default.navbar-fixed-top
       div.container
          div.navbar-header
@@ -10,22 +12,23 @@ nav.navbar.navbar-default.navbar-fixed-top
          div.navbar-collapse.navbar-right.collapse#main-menu
             ul.nav.navbar-nav
                li
-                  a.btn.btn-default.navbar-link#my-profile-nav(href="/user/" + username) My Profile
+                  a.btn.btn-default#my-profile-nav(href="/user/" + username) My Profile
                li.dropdown
-                  a.dropdown-toggle.navbar-link(href="#", data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false")
+                  a.dropdown-toggle(href="#", data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false")
                      | Search
                      span.caret
                   ul.dropdown-menu
                      li
                         form.navbar-form#nav-user-search(role="search", action="javascript:userSearch()")
-                           input.form-control#nav-user-search-input(type="text")
-                           div.nav-form-options
-                              label.form-label(for="nav-isbn") ISBN: 
-                              input.form-input-radio#nav-isbn.checked(type="radio", name="nav-form-radio", value="ISBN")
-                              label.form-label(for="nav-author") Author: 
-                              input.form-input-radio#nav-author(type="radio", name="nav-form-radio", value="author")
-                              label.form-label(for="nav-user") User: 
-                              input.form-input-radio#nav-user(type="radio", name="nav-form-radio", value="user")
+                           input.form-control#nav-user-search-input(type="text", placeholder="Search")
+                           div.form-group.navbar-form-choices
+                              label.nav-form-label(for="nav-isbn") ISBN:
+                              input.nav-form-input.nav-form-input-radio#nav-isbn.checked(type="radio", name="nav-form-radio", value="ISBN")
+                              label.nav-form-label(for="nav-author") Author:
+                              input.nav-form-input.nav-form-input-radio#nav-author(type="radio", name="nav-form-radio", value="author")
+                              label.nav-form-label(for="nav-user") User:
+                              input.nav-form-input.nav-form-input-radio#nav-user(type="radio", name="nav-form-radio", value="user")
                               button.btn.btn-default#nav-form-submit(type="submit") Search
-               li
-                  button.btn.btn-default.navbar-link#nav-logout(type="button") Log Out
+         ul.nav.navbar.navbar-right
+            li
+               button.btn.btn-default#nav-logout(type="button") Log Out

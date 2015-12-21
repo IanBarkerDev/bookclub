@@ -10,12 +10,12 @@
     <div class="container">
         <div class="login-signup-page">
             <h3>Log In</h3>
-            <form class="form">
+            <form class="form" action="/login" method="post">
                 <label class="form-label" for="username">Username:</label>
-                <input class="form-input" id="username" type="text">
+                <input class="form-input" id="username" type="text" name="username">
                 <br>
                 <label class="form-label" for="password">Password:</label>
-                <input class="form-input" id="password" type="password">
+                <input class="form-input" id="password" type="password" name="password">
                 <br>
                 <button type="submit" class="form-submit btn btn-default">Log In</button>
             </form>

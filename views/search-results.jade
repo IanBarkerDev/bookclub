@@ -29,40 +29,8 @@ head
 
 
 body
-   nav.navbar.navbar-default.navbar-fixed-top
-      div.container
-         div.navbar-header
-            button.navbar-toggle.collapsed(type="button", data-toggle="collapse", data-target="#main-menu", aria-expanded="false")
-               span.sr-only Toggle Navigation
-               span.icon-bar
-               span.icon-bar
-               span.icon-bar
-            a.navbar-brand(href="/user/" + username) Book Club
-         div.navbar-collapse.navbar-right.collapse#main-menu
-            ul.nav.navbar-nav
-               li
-                  a.btn.btn-default#my-profile-nav(href="/user/" + username) My Profile
-               li.dropdown
-                  a.dropdown-toggle(href="#", data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false")
-                     | Search
-                     span.caret
-                  ul.dropdown-menu
-                     li
-                        form.navbar-form#nav-user-search(role="search", action="javascript:userSearch()")
-                           div.form-group
-                              input.form-control#nav-user-search-input(type="text", placeholder="Search")
-                              label.form-label(for="nav-isbn") ISBN:
-                              input.form-input#nav-isbn(type="radio", name="nav-form-radio", value="ISBN")
-                              label.form-label(for="nav-author") Author:
-                              input.form-input#nav-author(type="radio", name="nav-form-radio", value="author")
-                              label.form-label(for="nav-user") User:
-                              input.form-input#nav-user(type="radio", name="nav-form-radio", value="user")
-                           button.btn.btn-default(type="submit") Search
-         ul.nav.navbar.navbar-right
-            li
-               button.btn.btn-default#nav-logout(type="button") Log Out
-
-
+   include navbar
+   
    div.container-fluid#main-section
       div.container
          h1 Search Results
