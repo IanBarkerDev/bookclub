@@ -10,14 +10,22 @@
     float: right;
 }
 
-.user-book-collection {
+#admin-search-all {
+    margin: 0 10px;
+}
+
+.book-collection, .book-collection-render, .book-collection-results {
     margin: 20px 10px 10px 10px;
     padding: 10px 30px;
     border: 1px inset black;
     background-color: #BAC7CC;
 }
 
-.user-book {
+.book-collection-results {
+    display: none;
+}
+
+.book {
     display: inline-block;
     height: 200px;
     width: 150px;
@@ -63,4 +71,43 @@
     position: absolute;
     top: -9px;
     right: -9px;
+}
+
+.book-collection-search {
+    height: 222px;
+    border: 1px solid black;
+    padding: 10px 30px;
+    margin: 20px 10px 10px 10px;
+    background-color: #bac7cc;
+    display: none;
+}
+
+#admin-search-input {
+    width: 258px;
+}
+
+.form-input-radio {
+    margin: 0 5px !important;
+}
+
+/* add/edit modals */
+
+.modal-dialog {
+    background-color: #e4d2ba;
+}
+
+.modal-body {
+    width: 280px;
+}
+
+.modal-body .form-div {
+    display: block;
+}
+
+.modal-body .form-div .form-label {
+    float: left;
+}
+
+.modal-body .form-div .form-input {
+    float: right;
 }

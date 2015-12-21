@@ -290,9 +290,6 @@ app.post("/admin/search", function(req, res) {
   var query = req.body.query;
   var typeOfSearch = req.body.typeOfSearch;
   
-  console.log(query);
-  console.log(typeOfSearch);
-  
   if(typeOfSearch === "ISBN") {
     Book.find({ISBN: query}, function(err, doc) {
       if(err) throw err;

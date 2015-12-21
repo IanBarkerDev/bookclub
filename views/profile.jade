@@ -15,6 +15,18 @@ head
          $("#nav-logout").on("click", function() {
             userLogout();
          })
+         
+         $("#admin-search-toggle").on("click", function() {
+            $(".book-collection-render").slideUp();
+            $(".book-collection-results").slideUp();
+             $(".book-collection-search").slideDown();
+         })
+         
+         $("#admin-search-all").on("click", function() {
+            $(".book-collection-search").slideUp();
+            $(".book-collection-render").slideDown();
+            $(".book-collection-results").slideUp();
+         })
 
            $("#admin-edit-genre-button").on("click", function() {
                genre.push($("#adminEditGenre").val());
@@ -51,10 +63,10 @@ head
               } else {
               
               // admin
-                 if(isbn.charAt(0) === "a") {
-                    isbn = isbn.slice(5);
-                    getBookPage(isbn);
-                 }
+              if(isbn.charAt(0) === "a") {
+                 isbn = isbn.slice(5);
+                 getBookPage(isbn);
+              }
               }
            })
            
@@ -99,9 +111,9 @@ body
           if(!isAdmin)
              h4 Book Collection
              if(book_collectionVisible)
-                div.user-book-collection
+                div.book-collection
                    each val in book_collection
-                      div.user-book(id="user" + val.book.ISBN)
+                      div.book(id="user" + val.book.ISBN)
                          div.clickable
                             img.book-img(src=val.book.img, alt=val.book.title + " Image")
                             p.book-title= val.book.title
@@ -116,26 +128,29 @@ body
           else
              div.admin-book-collection
                 button.btn.btn-default#admin-search-toggle(type="button") Search
+                button.btn.btn-default#admin-search-all(type="button") View All
                 button.btn.btn-default#admin-new(type="button", data-toggle="modal", data-target="#addModal") Add Book
 
-                div.admin-book-collection-render
+                div.book-collection-render
                    each val in book_collection
-                      div.admin-book(id="admin" + val.ISBN)
+                      div.book(id="admin" + val.ISBN)
                          div.clickable
                             img.book-img(src=val.img, alt=val.title + " Image")
                             p.book-title= val.title
-                         button.btn.btn-default.edit-book(type="button", data-toggle="modal", data-target="#editModal") Edit Book
+                         button.btn.btn-default.edit-book.book-button(type="button", data-toggle="modal", data-target="#editModal") Edit Book
 
-                div.admin-book-collection-search
+                div.book-collection-search
                    form#adminSearch(action="javascript:adminSearch()")
                       input.form-input#admin-search-input(type="text", placeholder="Search")
-                      label.form-label(for="admin-search-radio-ISBN") ISBN
+                      br
+                      label.form-label(for="admin-search-radio-ISBN") ISBN:
                       input.form-input-radio#admin-search-radio-ISBN(name="admin-search-radio", value="ISBN", type="radio", checked)
-                      label.form-label(for="admin-search-radio-author") Author
+                      label.form-label(for="admin-search-radio-author") Author:
                       input.form-input-radio#admin-search-radio-author(name="admin-search-radio", value="author", type="radio")
+                      br
                       button.btn.btn-default(type="submit") Search
 
-                div.admin-book-collection-results
+                div.book-collection-results
                    // appended results
           
           
@@ -150,32 +165,40 @@ body
              div.modal-body
                 form#adminAdd(action="javascript:adminAddBook()")
                 
-                   label.form-label(for="adminAddISBN") ISBN
-                   input.form-input#adminAddISBN(type="text", name="adminAddISBN")
+                   div.form-div
+                      label.form-label(for="adminAddISBN") ISBN
+                      input.form-input#adminAddISBN(type="text", name="adminAddISBN")
              
-                   label.form-label(for="adminAddTitle") Title
-                   input.form-input#adminAddTitle(type="text", name="adminAddTitle")
+                   div.form-div
+                      label.form-label(for="adminAddTitle") Title
+                      input.form-input#adminAddTitle(type="text", name="adminAddTitle")
 
-                   label.form-label(for="adminAddAuthor") Author
-                   input.form-input#adminAddAuthor(type="text", name="adminAddAuthor")
+                   div.form-div
+                      label.form-label(for="adminAddAuthor") Author
+                      input.form-input#adminAddAuthor(type="text", name="adminAddAuthor")
 
-                   label.form-label(for="adminAddImg") Image
-                   input.form-input#adminAddImg(type="text", name="adminAddImg")
+                   div.form-div
+                      label.form-label(for="adminAddImg") Image
+                      input.form-input#adminAddImg(type="text", name="adminAddImg")
 
-                   label.form-label(for="adminAddGenre") Genre
-                   input.form-input#adminAddGenre(type="text", name="adminAddGenre")
-                   button.btn.btn-default#admin-add-genre-button(type="button") Add Genre
+                   div.form-div
+                      label.form-label(for="adminAddGenre") Genres
+                      input.form-input#adminAddGenre(type="text", name="adminAddGenre")
+                      button.btn.btn-default#admin-add-genre-button(type="button") Add Genre
 
                    div.admin-add-genre
 
-                   label.form-label(for="adminAddPages") Pages
-                   input.form-input#adminAddPages(type="text", name="adminAddPages")
+                   div.form-div
+                      label.form-label(for="adminAddPages") Pages
+                      input.form-input#adminAddPages(type="text", name="adminAddPages")
 
-                   label.form-label(for="adminAddPubBy") Published By
-                   input.form-input#adminAddPubBy(type="text", name="adminAddPubBy")
-
-                   label.form-label(for="adminAddPubDate") Published On
-                   input.form-input#adminAddPubDate(type="text", name="adminAddPubDate")
+                   div.form-div
+                      label.form-label(for="adminAddPubBy") Published By
+                      input.form-input#adminAddPubBy(type="text", name="adminAddPubBy")
+ 
+                   div.form-div
+                      label.form-label(for="adminAddPubDate") Published On
+                      input.form-input#adminAddPubDate(type="text", name="adminAddPubDate")
 
                    button.btn.btn-default#add-submit(type="submit") Add Book
 
@@ -190,32 +213,40 @@ body
              div.modal-body
                 form#adminEdit(action="javascript:adminEditBook()")
                 
-                   label.form-label(for="adminEditISBN") ISBN
-                   input.form-input#adminEditISBN(type="text", name="adminEditISBN")
-             
-                   label.form-label(for="adminEditTitle") Title
-                   input.form-input#adminEditTitle(type="text", name="adminEditTitle")
+                   div.form-div
+                      label.form-label(for="adminEditISBN") ISBN
+                      input.form-input#adminEditISBN(type="text", name="adminEditISBN")
+                   br
+                   div.form-div
+                      label.form-label(for="adminEditTitle") Title
+                      input.form-input#adminEditTitle(type="text", name="adminEditTitle")
 
-                   label.form-label(for="adminEditAuthor") Author
-                   input.form-input#adminEditAuthor(type="text", name="adminEditAuthor")
+                   div.form-div
+                      label.form-label(for="adminEditAuthor") Author
+                      input.form-input#adminEditAuthor(type="text", name="adminEditAuthor")
 
-                   label.form-label(for="adminEditImg") Image
-                   input.form-input#adminEditImg(type="text", name="adminEditImg")
+                   div.form-div
+                      label.form-label(for="adminEditImg") Image
+                      input.form-input#adminEditImg(type="text", name="adminEditImg")
 
-                   label.form-label(for="adminEditGenre") Genre
-                   input.form-input#adminEditGenre(type="text", name="adminEditGenre")
-                   button.btn.btn-default#admin-edit-genre-button(type="button") Add Genre
+                   div.form-div
+                      label.form-label(for="adminEditGenre") Genre
+                      input.form-input#adminEditGenre(type="text", name="adminEditGenre")
+                      button.btn.btn-default#admin-edit-genre-button(type="button") Add Genre
 
-                   div.admin-edit-genre
+                      div.admin-edit-genre
 
-                   label.form-label(for="adminEditPages") Pages
-                   input.form-input#adminEditPages(type="text", name="adminEditPages")
+                   div.form-div
+                      label.form-label(for="adminEditPages") Pages
+                      input.form-input#adminEditPages(type="text", name="adminEditPages")
 
-                   label.form-label(for="adminEditPubBy") Published By
-                   input.form-input#adminEditPubBy(type="text", name="adminEditPubBy")
+                   div.form-div
+                      label.form-label(for="adminEditPubBy") Published By
+                      input.form-input#adminEditPubBy(type="text", name="adminEditPubBy")
 
-                   label.form-label(for="adminEditPubDate") Published On
-                   input.form-input#adminEditPubDate(type="text", name="adminEditPubDate")
+                   div.form-div
+                      label.form-label(for="adminEditPubDate") Published On
+                      input.form-input#adminEditPubDate(type="text", name="adminEditPubDate")
    
                    button.btn.btn-default#edit-submit(type="submit") Edit Book
 

@@ -41,6 +41,7 @@ function userAdd(isbn, username) {
 // action that searches the global collection for admins and displays results based on either isbn, author, or everything
 function adminSearch() {
     var typeOfSearch = $("input[name='admin-search-radio']:checked", "#adminSearch").val();
+    $(".book-collection-search").slideUp();
     $.ajax({
         url: "/admin/search",
         type: "post",
@@ -53,9 +54,19 @@ function adminSearch() {
         complete: function(data) {
             $(".admin-book-collection-results").empty();
             $.each(data.responseJSON, function(index, val) {
-                var html = '<div class="admin-search-result" id="admin' + val.ISBN + '"><button class="btn btn-default edit-book" type="button" data-toggle="modal" data-target="#editModal">Edit Book</button><p id="title">' + val.title + '</p></div>';
-                $(".admin-book-collection-results").append(html);
+                var html = '<div class="book" id="admin' + val.ISBN + '"><div class="clickable"><img class="book-img" src="' + val.img + '" alt="' + val.title + ' Image"><p class="book-title">' + val.title + '</p></div><button class="btn btn-default edit-book book-button" type="button" data-toggle="modal" data-target="#editModal">Edit Book</button></div>';
+                /*
+                '<div class="book" id="admin' + val.ISBN + '">
+                    <div class="clickable">
+                        <img class="book-img" src="' + val.img + '" alt="' + val.title + ' Image">
+                        <p class="book-title">' + val.title + '</p>
+                    </div>
+                    <button class="btn btn-default edit-book book-button" type="button" data-toggle="modal" data-target="#editModal">Edit Book</button>
+                </div>';
+                */
+                $(".book-collection-results").append(html);
             })
+            $(".book-collection-results").slideDown();
         }
     })
     
