@@ -1,0 +1,66 @@
+#book-collection {
+    margin-top: 100px;
+}
+
+#name-profile {
+    width: 90%;
+}
+
+#settings {
+    float: right;
+}
+
+.user-book-collection {
+    margin: 20px 10px 10px 10px;
+    padding: 10px 30px;
+    border: 1px inset black;
+    background-color: #BAC7CC;
+}
+
+.user-book {
+    display: inline-block;
+    height: 200px;
+    width: 150px;
+    margin: 0 5px;
+    padding: 3px;
+    position: relative;
+    background-color: #e4d2ba;
+}
+
+.book-img {
+    height: 120px;
+    width: 144px;
+    background-color: lightblue;
+}
+
+.book-title {
+    height: 38px;
+    font-size: 14px;
+    text-align: center;
+    padding: 5px 0 0 0;
+    margin: 0;
+}
+
+.book-button {
+    width: 144px;
+    text-align: center;
+    background-color: #0E9C23;
+    color: #FFFFFF;
+}
+
+.book-button:hover {
+    background-color: #FFF;
+    color: #0E9C23;
+}
+
+.trade-req-circle {
+    background-color: #F58105;
+    color: white;
+    border: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    position: absolute;
+    top: -9px;
+    right: -9px;
+}
