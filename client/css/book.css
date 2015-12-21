@@ -1,0 +1,48 @@
+#book {
+    margin-top: 100px;
+}
+
+.book-information {
+    border: 1px solid black;
+    background-color: #bac7cc;
+    display: block;
+}
+
+.book-img {
+    height: 275px;
+    width: 275px;
+}
+
+.book-more-info-button {
+    background-color: inherit;
+    border: none;
+    padding: 0;
+}
+
+.book-more-info-button:hover {
+    background-color: inherit;
+    border: none;
+}
+
+.book-more-info {
+    display: none;
+    font-size: 12px;
+}
+
+.book-more-info p {
+    margin: 0;
+}
+
+.book-genre {
+    margin: 1px 3px;
+}
+
+.book-add-user-collection {
+    background-color: #0E9C23;
+    color: #FFFFFF;
+}
+
+.book-add-user-collection:hover {
+    background-color: #FFF;
+    color: #0E9C23;    
+}

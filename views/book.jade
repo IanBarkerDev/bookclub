@@ -7,6 +7,7 @@ head
    
    script(src="/js/navbar.js")
    script(src="/js/serv-int.js")
+   link(rel="stylesheet", href="/css/book.css")
    
    script.
       var username = !{JSON.stringify(username)};
@@ -18,8 +19,12 @@ head
          })
          
          $(".book-add-user-collection").on("click", function() {
-            var isbn = $(this).parent().attr("id");
+            var isbn = $(this).parent().parent().parent().attr("id");
             userAdd(isbn, username);
+         })
+         
+         $(".book-more-info-button").on("click", function() {
+            $(".book-more-info").slideToggle();
          })
       })
 
@@ -31,21 +36,21 @@ body
       div.container
          div.book-information(id=ISBN)
             div.row
-               div.col-md-4
+               div.col-md-5
                   img.book-img(src=img, alt=title + " Image")
-               div.col-md-8
-                  h4.book-title #{Title}
-                  h6.book-author #{Author}
-            div.row
-               div.col-md-12
-                  button.btn.btn-default.book-more-info-button(type="button") More Info
+               div.col-md-7
+                  h4.book-title #{title}
+                  h6.book-author by #{author}
+                  button.btn.btn-default.book-more-info-button(type="button") Click For More Info...
+                  br
                   div.book-more-info
+                     p Genres: 
                      each val in genre
                         span.book-genre= val 
                      p.book-published Published by #{published_by} on #{published_date}
                      p.book-pages #{pages} pages
-                     p.book-ISBN #{ISBN}
-            button.btn.btn-default.book-add-user-collection Add to Collection
+                     p.book-ISBN ISBN: #{ISBN}
+                  button.btn.btn-default.book-add-user-collection Add to Collection
 
 
    footer
