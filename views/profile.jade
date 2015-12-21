@@ -136,84 +136,84 @@ body
           
           
           
-                  
-    div.modal.fade#addModal(tabindex="-1", role="dialog", aria-labelledby="addModalLabel")
-       div.modal-dialog(role="document")
-          div.modal-header
-             button.close(type="button", data-dismiss="modal", aria-label="Close")
-                span(aria-hidden="true") &times;
-             h4.modal-title#addModalLabel Add Book
-          div.modal-body
-             form#adminAdd(action="javascript:adminAddBook()")
+    if(isAdmin)              
+       div.modal.fade#addModal(tabindex="-1", role="dialog", aria-labelledby="addModalLabel")
+          div.modal-dialog(role="document")
+             div.modal-header
+                button.close(type="button", data-dismiss="modal", aria-label="Close")
+                   span(aria-hidden="true") &times;
+                h4.modal-title#addModalLabel Add Book
+             div.modal-body
+                form#adminAdd(action="javascript:adminAddBook()")
                 
-                label.form-label(for="adminAddISBN") ISBN
-                input.form-input#adminAddISBN(type="text", name="adminAddISBN")
+                   label.form-label(for="adminAddISBN") ISBN
+                   input.form-input#adminAddISBN(type="text", name="adminAddISBN")
              
-                label.form-label(for="adminAddTitle") Title
-                input.form-input#adminAddTitle(type="text", name="adminAddTitle")
+                   label.form-label(for="adminAddTitle") Title
+                   input.form-input#adminAddTitle(type="text", name="adminAddTitle")
 
-                label.form-label(for="adminAddAuthor") Author
-                input.form-input#adminAddAuthor(type="text", name="adminAddAuthor")
+                   label.form-label(for="adminAddAuthor") Author
+                   input.form-input#adminAddAuthor(type="text", name="adminAddAuthor")
 
-                label.form-label(for="adminAddImg") Image
-                input.form-input#adminAddImg(type="text", name="adminAddImg")
+                   label.form-label(for="adminAddImg") Image
+                   input.form-input#adminAddImg(type="text", name="adminAddImg")
 
-                label.form-label(for="adminAddGenre") Genre
-                input.form-input#adminAddGenre(type="text", name="adminAddGenre")
-                button.btn.btn-default#admin-add-genre-button(type="button") Add Genre
+                   label.form-label(for="adminAddGenre") Genre
+                   input.form-input#adminAddGenre(type="text", name="adminAddGenre")
+                   button.btn.btn-default#admin-add-genre-button(type="button") Add Genre
 
-                div.admin-add-genre
+                   div.admin-add-genre
 
-                label.form-label(for="adminAddPages") Pages
-                input.form-input#adminAddPages(type="text", name="adminAddPages")
+                   label.form-label(for="adminAddPages") Pages
+                   input.form-input#adminAddPages(type="text", name="adminAddPages")
 
-                label.form-label(for="adminAddPubBy") Published By
-                input.form-input#adminAddPubBy(type="text", name="adminAddPubBy")
+                   label.form-label(for="adminAddPubBy") Published By
+                   input.form-input#adminAddPubBy(type="text", name="adminAddPubBy")
 
-                label.form-label(for="adminAddPubDate") Published On
-                input.form-input#adminAddPubDate(type="text", name="adminAddPubDate")
+                   label.form-label(for="adminAddPubDate") Published On
+                   input.form-input#adminAddPubDate(type="text", name="adminAddPubDate")
 
-                button.btn.btn-default#add-submit(type="submit") Add Book
+                   button.btn.btn-default#add-submit(type="submit") Add Book
 
 
     
-    div.modal.fade#editModal(tabindex="-1", role="dialog", aria-labelledby="editModalLabel")
-       div.modal-dialog(role="document")
-          div.modal-header
-             button.close(type="button", data-dismiss="modal", aria-label="Close")
-                span(aria-hidden="true") &times;
-             h4.modal-title#editModalLabel Edit Book
-          div.modal-body
-             form#adminEdit(action="javascript:adminEditBook()")
+       div.modal.fade#editModal(tabindex="-1", role="dialog", aria-labelledby="editModalLabel")
+          div.modal-dialog(role="document")
+             div.modal-header
+                button.close(type="button", data-dismiss="modal", aria-label="Close")
+                   span(aria-hidden="true") &times;
+                h4.modal-title#editModalLabel Edit Book
+             div.modal-body
+                form#adminEdit(action="javascript:adminEditBook()")
                 
-                label.form-label(for="adminEditISBN") ISBN
-                input.form-input#adminEditISBN(type="text", name="adminEditISBN")
+                   label.form-label(for="adminEditISBN") ISBN
+                   input.form-input#adminEditISBN(type="text", name="adminEditISBN")
              
-                label.form-label(for="adminEditTitle") Title
-                input.form-input#adminEditTitle(type="text", name="adminEditTitle")
+                   label.form-label(for="adminEditTitle") Title
+                   input.form-input#adminEditTitle(type="text", name="adminEditTitle")
 
-                label.form-label(for="adminEditAuthor") Author
-                input.form-input#adminEditAuthor(type="text", name="adminEditAuthor")
+                   label.form-label(for="adminEditAuthor") Author
+                   input.form-input#adminEditAuthor(type="text", name="adminEditAuthor")
 
-                label.form-label(for="adminEditImg") Image
-                input.form-input#adminEditImg(type="text", name="adminEditImg")
+                   label.form-label(for="adminEditImg") Image
+                   input.form-input#adminEditImg(type="text", name="adminEditImg")
 
-                label.form-label(for="adminEditGenre") Genre
-                input.form-input#adminEditGenre(type="text", name="adminEditGenre")
-                button.btn.btn-default#admin-edit-genre-button(type="button") Add Genre
+                   label.form-label(for="adminEditGenre") Genre
+                   input.form-input#adminEditGenre(type="text", name="adminEditGenre")
+                   button.btn.btn-default#admin-edit-genre-button(type="button") Add Genre
 
-                div.admin-edit-genre
+                   div.admin-edit-genre
 
-                label.form-label(for="adminEditPages") Pages
-                input.form-input#adminEditPages(type="text", name="adminEditPages")
+                   label.form-label(for="adminEditPages") Pages
+                   input.form-input#adminEditPages(type="text", name="adminEditPages")
 
-                label.form-label(for="adminEditPubBy") Published By
-                input.form-input#adminEditPubBy(type="text", name="adminEditPubBy")
+                   label.form-label(for="adminEditPubBy") Published By
+                   input.form-input#adminEditPubBy(type="text", name="adminEditPubBy")
 
-                label.form-label(for="adminEditPubDate") Published On
-                input.form-input#adminEditPubDate(type="text", name="adminEditPubDate")
-
-                button.btn.btn-default#edit-submit(type="submit") Edit Book
+                   label.form-label(for="adminEditPubDate") Published On
+                   input.form-input#adminEditPubDate(type="text", name="adminEditPubDate")
+   
+                   button.btn.btn-default#edit-submit(type="submit") Edit Book
 
                 
 
