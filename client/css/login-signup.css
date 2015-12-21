@@ -1,0 +1,60 @@
+body {
+    text-align: center;
+    background-color: lightgray;
+}
+
+.container {
+    margin: 100px auto 0 auto;
+}
+
+.login-signup-page {
+    margin: 0 auto;
+    position: relative;
+}
+
+.form-label {
+    font-size: 14px;
+    position: absolute;
+    left: 0;
+}
+
+.form-input {
+    font-size: 14px;
+    margin: 0 2px;
+}
+
+/* line up username and password inputs
+   because label lengths are different*/
+.form-input#login-password {
+    margin: 0 2px 0 4px;
+}
+
+/* this is without bootstrap
+   if using it then adjust accordingly*/
+.form-submit {
+    background-color: white;
+    border: 1px solid white;
+    color: black;
+    border-radius: 5px;
+    width: 60px;
+    padding: auto;
+    margin: 5px auto 5px 51px;
+}
+
+.form-submit:hover {
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+.switch {
+    font-size: 12px;
+}
+
+.switch a {
+    color: navy;
+}
+
+.switch a:hover {
+    text-decoration: underline;
+    color: dodgerblue;
+}
