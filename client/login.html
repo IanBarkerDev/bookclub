@@ -1,22 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <meta charset="UTF-8">
     <title>Log In</title>
     <link rel="stylesheet" href="/css/login-signup.css">
 </head>
 <body>
-<div class="container-fluid">
+<div class="container-fluid" id="login">
     <div class="container">
-        <div class="form-design">
-            <form action="/login" method="post">
-                <label for="username" class="form-label">Username: </label>
-                <input type="text" name="username" id="username" class="form-input">
-                <label for="password" class="form-label">Password: </label>
-                <input type="password" name="password" id="password" class="form-input">
-                <button type="submit" class="btn btn-default">Log In</button>
+        <div class="login-signup-page">
+            <h3>Log In</h3>
+            <form class="form">
+                <label class="form-label" for="login-username">Username:</label>
+                <input class="form-input" id="login-username" type="text">
+                <br>
+                <label class="form-label" for="login-password">Password:</label>
+                <input class="form-input" id="login-password" type="password">
+                <br>
+                <button type="submit" class="form-submit btn btn-default">Log In</button>
             </form>
-            <span class="switch">Don't have an account? Sign up instead.</span>
+            <span class="switch" id="to-signup">Don't have an account you? <a href="/signup.html">Sign up instead.</a></span>
         </div>
     </div>
 </div>
