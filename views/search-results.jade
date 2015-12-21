@@ -7,6 +7,7 @@ head
    
    script(src="/js/navbar.js")
    script(src="/js/serv-int.js")
+   link(rel="stylesheet", href="/css/search-results.css")
    
    script.
       var username = !{JSON.stringify(username)};
@@ -41,10 +42,10 @@ body
                      div.clickable
                         img.book-img(src=val.img, alt=val.title + " Image")
                         p.book-title= val.title
-                     button.btn.btn-default.add-to-collection Add to Collection
+                     button.btn.btn-default.book-button.add-to-collection Add to Collection
             else
                each val, index in results
-                  div.search-result(id="result" + val.username)
+                  div.search-result-user(id="result" + val.username)
                      button.btn.btn-default.search-result-username= val.username
                   
    footer
