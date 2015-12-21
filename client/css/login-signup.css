@@ -14,7 +14,7 @@ body {
 
 .form-label {
     font-size: 14px;
-    position: absolute;
+    position: relative;
     left: 0;
 }
 
@@ -23,10 +23,18 @@ body {
     margin: 0 2px;
 }
 
-/* line up username and password inputs
+/* line up inputs to be equal to username
    because label lengths are different*/
-.form-input#login-password {
+.form-input#password {
     margin: 0 2px 0 4px;
+}
+
+.form-input#email {
+    margin: 0 2px 0 22px;
+}
+
+.form-input#password_con {
+    margin: 0 2px 0 8px;
 }
 
 /* this is without bootstrap
