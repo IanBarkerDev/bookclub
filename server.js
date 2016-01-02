@@ -71,7 +71,7 @@ app.post("/signup", function(req, res) {
     },
     book_collection: [],
     book_collectionVisible: true,
-    isAdmin: false
+    isAdmin: true
   })
   
   // saves user to databse
