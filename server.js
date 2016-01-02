@@ -4,8 +4,7 @@ var bodyparser = require("body-parser");
 var path = require("path");
 
 
-mongoose.connect("mongodb://localhost/bookclub");
-var db = mongoose.connection;
+mongoose.connect("mongodb://ibarker:brickmansiondoglollipop@ds037175.mongolab.com:37175/bookclub");
 
 var User = require("./app/models/user");
 var Book = require("./app/models/book");
@@ -474,4 +473,4 @@ app.post("/userrequest", function(req, res) {
 })
 
 
-app.listen(80);
+app.listen(process.env.PORT);
