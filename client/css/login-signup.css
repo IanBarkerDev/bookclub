@@ -1,6 +1,6 @@
 body {
     text-align: center;
-    background-color: lightgray;
+    background-color: #aa4139;
 }
 
 .container {
@@ -12,30 +12,29 @@ body {
     position: relative;
 }
 
+h3 {
+    font-size: 40px;
+}
+
+form {
+    width: 360px;
+    margin: 0 auto 10px auto;
+}
+
 .form-label {
-    font-size: 14px;
+    font-size: 20px;
     position: relative;
-    left: 0;
+    margin: 6px 3px 6px 3px;
+    float: left;
+    color: #fff;
 }
 
 .form-input {
-    font-size: 14px;
-    margin: 0 2px;
+    font-size: 20px;
+    margin: 3px 0 3px 3px;
+    float: right;
 }
 
-/* line up inputs to be equal to username
-   because label lengths are different*/
-.form-input#password {
-    margin: 0 2px 0 4px;
-}
-
-.form-input#email {
-    margin: 0 2px 0 22px;
-}
-
-.form-input#password_con {
-    margin: 0 2px 0 8px;
-}
 
 /* this is without bootstrap
    if using it then adjust accordingly*/
@@ -51,15 +50,17 @@ body {
 
 .form-submit:hover {
     background-color: lightgray;
+    border-color: lightgray;
     cursor: pointer;
 }
 
 .switch {
-    font-size: 12px;
+    font-size: 20px;
+    color: #fff;
 }
 
 .switch a {
-    color: navy;
+    color: #A5CCCC;
 }
 
 .switch a:hover {
