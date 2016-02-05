@@ -14,8 +14,8 @@ nav.navbar.navbar-default.navbar-fixed-top
                li
                   a.btn.btn-default#my-profile-nav(href="/user/" + username) My Profile
                li.dropdown
-                  a.dropdown-toggle(href="#", data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false")
-                     | Search
+                  a.btn.btn-default.dropdown-toggle(href="#", data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false")
+                     | Search 
                      span.caret
                   ul.dropdown-menu
                      li
@@ -29,6 +29,5 @@ nav.navbar.navbar-default.navbar-fixed-top
                               label.nav-form-label(for="nav-user") User:
                               input.nav-form-input.nav-form-input-radio#nav-user(type="radio", name="nav-form-radio", value="user")
                               button.btn.btn-default#nav-form-submit(type="submit") Search
-            ul.nav.navbar.navbar-right
                li
                   button.btn.btn-default#nav-logout(type="button") Log Out

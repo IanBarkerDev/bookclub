@@ -385,7 +385,18 @@ app.get("/book/:ISBN", function(req, res) {
   }, function(err, doc) {
     if(err) throw err;
     
-    res.render("book", {username: req.cookies.username, ISBN: doc.ISBN, title: doc.title, author: doc.author, img: doc.img, genre: doc.genre, pages: doc.pages, published_by: doc.published.published_by, published_date: doc.published.published_date});
+    res.render("book", {
+                        username: req.cookies.username,
+                        ISBN: doc.ISBN,
+                        title: doc.title,
+                        author: doc.author,
+                        img: doc.img,
+                        genre: doc.genre,
+                        pages: doc.pages,
+                        published_by: doc.published.published_by,
+                        published_date: doc.published.published_date
+      
+    });
   })
 })
 

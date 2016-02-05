@@ -164,42 +164,32 @@ body
                 h4.modal-title#addModalLabel Add Book
              div.modal-body
                 form#adminAdd(action="javascript:adminAddBook()")
-                
                    div.form-div
                       label.form-label(for="adminAddISBN") ISBN
                       input.form-input#adminAddISBN(type="text", name="adminAddISBN")
-             
                    div.form-div
                       label.form-label(for="adminAddTitle") Title
                       input.form-input#adminAddTitle(type="text", name="adminAddTitle")
-
                    div.form-div
                       label.form-label(for="adminAddAuthor") Author
                       input.form-input#adminAddAuthor(type="text", name="adminAddAuthor")
-
                    div.form-div
                       label.form-label(for="adminAddImg") Image
                       input.form-input#adminAddImg(type="text", name="adminAddImg")
-
-                   div.form-div
+                   div.form-div.genre
                       label.form-label(for="adminAddGenre") Genres
                       input.form-input#adminAddGenre(type="text", name="adminAddGenre")
-                      button.btn.btn-default#admin-add-genre-button(type="button") Add Genre
-
-                   div.admin-add-genre
-
+                      button.btn.btn-default.genre-button#admin-add-genre-button(type="button") Add Genre
+                      div.admin-add-genre
                    div.form-div
                       label.form-label(for="adminAddPages") Pages
                       input.form-input#adminAddPages(type="text", name="adminAddPages")
-
                    div.form-div
                       label.form-label(for="adminAddPubBy") Published By
                       input.form-input#adminAddPubBy(type="text", name="adminAddPubBy")
- 
                    div.form-div
                       label.form-label(for="adminAddPubDate") Published On
                       input.form-input#adminAddPubDate(type="text", name="adminAddPubDate")
-
                    button.btn.btn-default#add-submit(type="submit") Add Book
 
 
@@ -216,7 +206,6 @@ body
                    div.form-div
                       label.form-label(for="adminEditISBN") ISBN
                       input.form-input#adminEditISBN(type="text", name="adminEditISBN")
-                   br
                    div.form-div
                       label.form-label(for="adminEditTitle") Title
                       input.form-input#adminEditTitle(type="text", name="adminEditTitle")
@@ -229,10 +218,10 @@ body
                       label.form-label(for="adminEditImg") Image
                       input.form-input#adminEditImg(type="text", name="adminEditImg")
 
-                   div.form-div
+                   div.form-div.genre
                       label.form-label(for="adminEditGenre") Genre
                       input.form-input#adminEditGenre(type="text", name="adminEditGenre")
-                      button.btn.btn-default#admin-edit-genre-button(type="button") Add Genre
+                      button.btn.btn-default.genre-button#admin-edit-genre-button(type="button") Add Genre
 
                       div.admin-edit-genre
 

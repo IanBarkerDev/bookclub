@@ -1,3 +1,7 @@
+body {
+    background-color: #FFD3AA;
+}
+
 #book-collection {
     margin-top: 100px;
 }
@@ -18,7 +22,7 @@
     margin: 20px 10px 10px 10px;
     padding: 10px 30px;
     border: 1px inset black;
-    background-color: #BAC7CC;
+    background-color: #69969C;
 }
 
 .book-collection-results {
@@ -27,7 +31,7 @@
 
 .book {
     display: inline-block;
-    height: 200px;
+    height: 220px;
     width: 150px;
     margin: 0 5px;
     padding: 3px;
@@ -54,6 +58,8 @@
     text-align: center;
     background-color: #0E9C23;
     color: #FFFFFF;
+    position: absolute;
+    bottom: 5px;
 }
 
 .book-button:hover {
@@ -78,8 +84,16 @@
     border: 1px solid black;
     padding: 10px 30px;
     margin: 20px 10px 10px 10px;
-    background-color: #bac7cc;
+    background-color: #69969C;
     display: none;
+}
+
+.book-collection-search #admin-search-input {
+    margin-bottom: 8px;
+}
+
+.book-collection-search .btn {
+    margin-top: 8px;
 }
 
 #admin-search-input {
@@ -97,17 +111,66 @@
 }
 
 .modal-body {
-    width: 280px;
+    width: 600px;
 }
 
-.modal-body .form-div {
+.form-div {
     display: block;
+    margin: 3px;
+    position: relative;
+    height: 25px;
 }
 
-.modal-body .form-div .form-label {
-    float: left;
+.form-div .form-input {
+    position: absolute;
+    left: 150px;
 }
 
-.modal-body .form-div .form-input {
-    float: right;
+.form-div .form-label {
+    position: absolute;
+    left: 0;
+    padding-top: 2px;
 }
+
+.genre {
+    position: absolute;
+    top: 15px;
+    left: 330px;
+}
+
+.genre .form-label {
+    left: 18px;
+}
+
+.genre .form-input {
+    left: 80px;
+}
+
+.genre .genre-button {
+    position: absolute;
+    top: 30px;
+    left: 10px;
+}
+
+.genre .admin-edit-genre {
+    position: absolute;
+    top: 70px;
+    left: 10px;
+}
+
+.genre .admin-edit-genre .btn {
+    display: inline-block;
+    margin-top: 2px;
+}
+
+.genre .admin-add-genre {
+    position: absolute;
+    top: 70px;
+    left: 10px;
+}
+
+.genre .admin-add-genre .btn {
+    display: inline-block;
+    margin-top: 2px;
+}
+

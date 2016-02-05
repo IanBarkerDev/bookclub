@@ -1,6 +1,13 @@
+body {
+    background-color: #FFD3AA;    
+}
 
 #change-password {
     margin-top: 100px;
+}
+
+.panel {
+    border-radius: 15px !important;
 }
 
 .panel-title {
@@ -24,4 +31,14 @@
 .form-input-checkbox {
     width: auto;
     margin: 0 4px !important;
+}
+
+.panel .btn-default {
+    border: none;
+    background-color: #801e16;
+    color: #fff !important;
+}
+
+.panel .btn-default:hover {
+    background-color: #d4726a !important;
 }

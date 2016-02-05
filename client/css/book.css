@@ -1,32 +1,64 @@
+body {
+    background-color: #FFD3AA;
+    font-family: Arial, Sans-serif;
+}
+
 #book {
     margin-top: 100px;
 }
 
 .book-information {
     border: 1px solid black;
-    background-color: #bac7cc;
+    background-color: #69969C;
     display: block;
 }
 
 .book-img {
     height: 275px;
     width: 275px;
+    display: inline-block;
+}
+
+.book-information-div {
+    display: inline-block;
+    margin-left: 25px;
+    position: absolute;
+    height: 275px;
+    width: 400px;
+    
+}
+
+.book-title {
+    font-size: 24px;
 }
 
 .book-more-info-button {
     background-color: inherit;
     border: none;
     padding: 0;
+    color: #fff;
 }
 
 .book-more-info-button:hover {
     background-color: inherit;
     border: none;
+    color: lightblue;
 }
+
+.book-more-info-button:active {
+    background-color: inherit;
+    color: lightblue;
+}
+
+.book-more-info-button:active:hover {
+    background-color: inherit;
+    color: lightblue;
+}
+
 
 .book-more-info {
     display: none;
-    font-size: 12px;
+    font-size: 16px;
 }
 
 .book-more-info p {
@@ -40,6 +72,8 @@
 .book-add-user-collection {
     background-color: #0E9C23;
     color: #FFFFFF;
+    position: absolute;
+    bottom: 20px;
 }
 
 .book-add-user-collection:hover {
