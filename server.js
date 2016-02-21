@@ -422,10 +422,12 @@ app.post("/user_search/author", function(req, res) {
   res.json({url: "/search/results/author/" + author});
 })
 
+
 app.get("/search/results/author/:author", function(req, res) {
   var author = req.params.author;
-  Book.find({author: author}, function(err, doc) {
+  Book.find({'author': new RegExp(author, "i") }, function(err, doc) {
     if(err) throw err;
+    console.log(doc);
     res.render("search-results", {username: req.cookies.username, results: doc, book: true})
   })
 })
@@ -438,7 +440,7 @@ app.post("/user_search/user", function(req, res) {
 
 app.get("/search/results/user/:user", function(req, res) {
   var user = req.params.user;
-  User.find({username: user}, function(err, users) {
+  User.find({'username': new RegExp(user, "i") }, function(err, users) {
     if(err) throw err;
     res.render("search-results", {username: req.cookies.username, results: users, book: false});
   })
