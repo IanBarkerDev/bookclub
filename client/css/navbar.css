@@ -4,22 +4,23 @@ nav {
     font-size: 16px;
     padding: 10px 0 5px 0;
     
-    border-bottom: 1px solid #FFD3AA;
+    border-bottom: 1px solid #BDA27E;
     height: 69px;
 }
 
 .navbar-default {
-    background-color: #aa4139;
+    background-color: #D2B48C;
 }
 
 .navbar-brand {
     font-size: 24px;
-    background-color: #801e16;
+    background-color: #555479;
     color: #fff !important;
+    border-radius: 6px;
 }
 
 .navbar-brand:hover {
-    background-color: #d4726a !important;
+    background-color: #3D3C5E !important;
 }
 
 .navbar-link {
@@ -31,18 +32,19 @@ nav {
 
 nav .btn-default {
     border: none;
-    background-color: #801e16;
+    background-color: #555479;
     color: #fff !important;
     vertical-align: top;
     margin: 0 2px;
 }
 
 nav .btn-default:hover {
-    background-color: #d4726a !important;
+    background-color: #3D3C5E !important;
 }
 
 .navbar-default .navbar-nav>.open>a{
-    background-color: #d4726a !important;
+    background-color: #3D3C5E !important;
+    border-radius: 4px 4px 0 4px;
 }
 
 #my-profile-nav {
@@ -72,7 +74,7 @@ nav .btn-default:hover {
     width: 300px;
     padding: 0;
     margin-top: 4px;
-    vertical-align: center;
+    vertical-align: middle;
 }
 
 .navbar-form-choices .nav-form-label, .navbar-form-choices .nav-form-input-radio {
@@ -96,11 +98,8 @@ nav .btn-default:hover {
 /* standard footer */
 
 footer {
-    width: 200px;
-    margin: 100px auto 0 auto;
-    text-align: center;
-    font-size: 10px;
-    font-style: italic;
-    border-top: 1px solid grey;
-    color: grey;
+    position: absolute;
+    bottom: 1%;
+    left: 50%;
+    transform: translateX(-50%);
 }
