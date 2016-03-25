@@ -49,7 +49,8 @@ body
                      p.book-published Published by #{published_by} on #{published_date}
                      p.book-pages #{pages} pages
                      p.book-ISBN ISBN: #{ISBN}
-                  button.btn.btn-default.book-add-user-collection Add to Collection
+                  if !userOwns
+                     button.btn.btn-default.book-add-user-collection Add to Collection
 
 
    include footer

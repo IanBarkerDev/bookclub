@@ -389,18 +389,26 @@ app.get("/book/:ISBN", function(req, res) {
     ISBN: req.params.ISBN
   }, function(err, doc) {
     if(err) throw err;
-    
-    res.render("book", {
-                        username: req.cookies.username,
-                        ISBN: doc.ISBN,
-                        title: doc.title,
-                        author: doc.author,
-                        img: doc.img,
-                        genre: doc.genre,
-                        pages: doc.pages,
-                        published_by: doc.published.published_by,
-                        published_date: doc.published.published_date
-      
+    User.findOne({username: req.cookies.username}, function(err, user) {
+      var userOwns = false;
+      for(var i = 0; i < user.book_collection.length; i ++) {
+        if(user.book_collection[i].book == doc.ISBN) {
+          userOwns = true;
+        }
+      }
+      res.render("book", {
+        username: req.cookies.username,
+        userOwns: userOwns,
+        ISBN: doc.ISBN,
+        title: doc.title,
+        author: doc.author,
+        img: doc.img,
+        genre: doc.genre,
+        pages: doc.pages,
+        published_by: doc.published.published_by,
+        published_date: doc.published.published_date
+
+      });
     });
   })
 });
@@ -416,7 +424,15 @@ app.get("/search/results/ISBN/:ISBN", function(req, res) {
   var ISBN = req.params.ISBN;
   Book.find({ISBN: ISBN}, function(err, doc) {
     if(err) throw err;
-    res.render("search-results", {username: req.cookies.username, results: doc, book: true})
+    User.findOne({username: req.cookies.username}, function(err, user) {
+      var userOwns = false;
+      for(var i = 0; i < user.book_collection.length; i ++) {
+        if(user.book_collection[i].book == doc.ISBN) {
+          userOwns = true;
+        }
+      }
+      res.render("search-results", {username: req.cookies.username, userOwns: userOwns, results: doc, book: true})
+    });
   })
 });
 
