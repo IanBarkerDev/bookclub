@@ -1,5 +1,5 @@
 var express = require("express");
-var mongoose = require("mongoose")
+var mongoose = require("mongoose");
 var bodyparser = require("body-parser");
 var path = require("path");
 
@@ -23,13 +23,18 @@ app.set("view engine", "jade");
 
 // Base page
 app.get("/", function(req, res) {
-  res.render("index");
-})
+  Book.find({}).limit(5).exec(function(err, doc) {
+    res.render("index", {
+      username: (req.cookies.username ? req.cookies.username : null),
+      recent: doc
+    })
+  });
+});
 
 app.post("/logout", function(req, res) {
-  res.cookie("username", "");
+  res.cookie("username", null);
   res.end();
-})
+});
 
 // Login to get to profile
 app.post("/login", function(req, res) {
@@ -48,7 +53,7 @@ app.post("/login", function(req, res) {
     // TODO: if not send back that information, need to be able to deal with that
 
   })
-})
+});
 
 // Signup to database and then get sent to profile
 // TODO: if password !== confirm_password, send back that information and deal with it client side
@@ -72,7 +77,7 @@ app.post("/signup", function(req, res) {
     book_collection: [],
     book_collectionVisible: true,
     isAdmin: false
-  })
+  });
   
   // saves user to databse
   user.save();
@@ -80,7 +85,7 @@ app.post("/signup", function(req, res) {
   res.cookie("username", username);
   res.cookie("isAdmin", user.isAdmin);
   res.redirect("/user/" + username); 
-})
+});
 
 app.get("/user/:username", function(req, res) {
   var username = req.params.username;
@@ -109,7 +114,7 @@ app.get("/user/:username", function(req, res) {
       // simplify book_collection down to just the books
         var arr = user.book_collection.map(function(x) {
           return x.book;
-        })
+        });
         // find all of the books based on isbn and store in an array
       Book.find({ISBN: {$in: arr}}, function(err, books) {
         if(err) throw err;
@@ -140,7 +145,7 @@ app.get("/user/:username", function(req, res) {
     }
     
   })
-})
+});
 
 // Take username and go to personal settings page for them
 app.get("/user/:username/settings", function(req, res) {
@@ -162,7 +167,7 @@ app.get("/user/:username/settings", function(req, res) {
       issue: issue
     });
   })
-})
+});
 
 // Change the password of a user
 app.post("/user/:username/new_password", function(req, res) {
@@ -198,7 +203,7 @@ app.post("/user/:username/new_password", function(req, res) {
       }
     })
   }
-})
+});
 
 // Change information (city, state, name, email) of a user
 app.post("/user/:username/update_profile", function(req, res) {
@@ -255,7 +260,7 @@ app.post("/user/:username/update_profile", function(req, res) {
   })
   
   
-})
+});
 
 // Admin adds a book to the global collection
 app.post("/addbook", function(req, res) {
@@ -271,11 +276,11 @@ app.post("/addbook", function(req, res) {
     author: author,
     pages: pages,
     published: {published_date: null, published_by: published_by}
-  })
+  });
   
   book.save();
   res.redirect("/book/" + ISBN);
-})
+});
 
 /*
  admin editing a book would seem to be 3 calls
@@ -309,7 +314,7 @@ app.post("/admin/search", function(req, res) {
       res.json(doc);
     })
   }
-})
+});
 
 /* admin edit button has been clicked, looking for information to populate edit dialog */
 app.post("/admin/search/ISBN", function(req, res) {
@@ -319,7 +324,7 @@ app.post("/admin/search/ISBN", function(req, res) {
     if(err) throw err;
     res.json(doc);
   })
-})
+});
 
 // book is edited based on new information provided by admin
 app.post("/admin/edit", function(req, res) {
@@ -343,13 +348,13 @@ app.post("/admin/edit", function(req, res) {
       published_date: published_date,
       published_by: published_by
     }
-  }
+  };
   
   Book.update({ISBN: isbn}, updatedData, function(err, doc) {
     if(err) throw err;
     res.json({url: "/book/" + isbn});
   })
-})
+});
 
 app.post("/admin/add", function(req, res) {
   var isbn = req.body.isbn;
@@ -372,11 +377,11 @@ app.post("/admin/add", function(req, res) {
       published_date: published_date,
       published_by: published_by
     }
-  })
+  });
   
   book.save();
   res.json({url: "/book/" + isbn});
-})
+});
 
 // Book's page based on unique ISBN
 app.get("/book/:ISBN", function(req, res) {
@@ -398,7 +403,7 @@ app.get("/book/:ISBN", function(req, res) {
       
     });
   })
-})
+});
 
 
 //TODO: simplify this down to 1 or 2 routes from 6
@@ -406,7 +411,7 @@ app.get("/book/:ISBN", function(req, res) {
 app.post("/user_search/ISBN", function(req, res) {
   var ISBN = req.body.data;
   res.json({url: "/search/results/ISBN/" + ISBN});
-})
+});
 
 app.get("/search/results/ISBN/:ISBN", function(req, res) {
   var ISBN = req.params.ISBN;
@@ -414,13 +419,13 @@ app.get("/search/results/ISBN/:ISBN", function(req, res) {
     if(err) throw err;
     res.render("search-results", {username: req.cookies.username, results: doc, book: true})
   })
-})
+});
 
 // User searches the global collection via author
 app.post("/user_search/author", function(req, res) {
   var author = req.body.data;
   res.json({url: "/search/results/author/" + author});
-})
+});
 
 
 app.get("/search/results/author/:author", function(req, res) {
@@ -430,13 +435,13 @@ app.get("/search/results/author/:author", function(req, res) {
     console.log(doc);
     res.render("search-results", {username: req.cookies.username, results: doc, book: true})
   })
-})
+});
 
 // User searches the global collection via user
 app.post("/user_search/user", function(req, res) {
   var user = req.body.data;
   res.json({url: "/search/results/user/" + user});
-})
+});
 
 app.get("/search/results/user/:user", function(req, res) {
   var user = req.params.user;
@@ -444,7 +449,7 @@ app.get("/search/results/user/:user", function(req, res) {
     if(err) throw err;
     res.render("search-results", {username: req.cookies.username, results: users, book: false});
   })
-})
+});
 
 // User add's a book to their personal collection
 // TODO: make sure user doesn't already own OR when displaying, don't show add button if user owns
@@ -454,13 +459,27 @@ app.get("/:username/add/:ISBN", function(req, res) {
   
   User.update({username: user}, {$push: {book_collection: {book: isbn, trade_req: []}}}, function(err, doc) {
     if(err) throw err;
-  })
+  });
   
   Book.update({ISBN: isbn}, {$push: {ownedBy: user}}, function(err, doc) {
     if(err) throw err;
   })
   
-})
+});
+
+// user removes a book from their personal collection
+app.post("/:username/remove/:ISBN", function(req, res) {
+  var user = req.params.username;
+  var isbn = req.params.ISBN;
+
+  User.update({username: user}, {$pull: {book_collection: {book: isbn}}}, function(err, doc) {
+    if(err) throw err;
+  });
+
+  Book.update({ISBN: isbn}, {$pull: {ownedBy: user}}, function(err, doc) {
+    if(err) throw err;
+  })
+});
 
 // On another user's page, requesting user asks for another book
 app.post("/userrequest", function(req, res) {
@@ -483,7 +502,7 @@ app.post("/userrequest", function(req, res) {
     res.json({data: "success"});
     
   })
-})
+});
 
 
-app.listen(process.env.PORT);
+app.listen(process.env.PORT || 4000);

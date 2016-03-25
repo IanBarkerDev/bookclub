@@ -46,13 +46,13 @@ head
 
               var html = "<button class='btn btn-default admin-add-genre-delete' id='genre" + (genre.length - 1) + "'>" + $("#adminAddGenre").val() + "</button>";
               $(".admin-add-genre").append(html);
-           })
+           });
 
            $(".admin-add-genre").on("click", ".admin-add-genre-delete", function() {
                var index = +$(this).attr("id").slice(5);
               genre.splice(index, 1);
               $(".admin-add-genre").children("#genre" + index).remove();
-           })
+           });
            
            $(".clickable").on("click", function() {
               var isbn = $(this).parent().attr("id");
@@ -68,7 +68,7 @@ head
                     getBookPage(isbn);
                 }
              }
-           })
+           });
            
            $(".trade_req").on("click", function() {
               var elem = $(this);
@@ -88,12 +88,18 @@ head
                     }
                  }
               })
-           })
+           });
+
+            $(".remove_book").on("click", function() {
+                var isbn = $(this).parent().attr("id").slice(4);
+                console.log(isbn);
+                removeBook(username, isbn);
+            });
            
            $(".admin-book-collection").on("click", ".edit-book", function() {
               var isbn = $(this).parent().attr("id").slice(5);
               adminSearchISBN(isbn);
-           })
+           });
            
            $("#settings").on("click", function() {
               window.location.pathname = "/user/" + username + "/settings";
@@ -102,7 +108,6 @@ head
         });
 body
     include navbar
-
     div.container-fluid#book-collection
        div.container
           h2#name-profile

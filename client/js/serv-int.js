@@ -153,6 +153,13 @@ function tradeReq(username, isbn) {
     })
 }
 
+function removeBook(user, isbn) {
+    $.ajax({
+        url: "/" + user + "/remove/" + isbn,
+        type: "post"
+    })
+}
+
 function getBookPage(isbn) {
     window.location.pathname = "/book/" + isbn;
 }
