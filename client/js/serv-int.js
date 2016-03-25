@@ -16,17 +16,6 @@ function userSearch() {
             console.log(data);
             window.location.pathname = data.responseJSON.url;
         }
-        /*complete: function(data) {
-            $(".user-search-results").empty();
-            $.each(data.responseJSON, function(index, val) {
-                var genre = "";
-                $.each(val.genre, function(index, val) {
-                    genre = genre + val + " ";
-                })
-                var html = '<div class="user-search-result" id="' + val.ISBN + '"><button class="btn btn-default add-to-collection">Add To Collection</button><p class="add-title">' + val.title + '</p><p class="add-author">' + val.author + '</p><p class="add-genre">' + genre + '</p></div>';
-                $(".user-search-results").append(html);
-            })
-        }*/
     })
 }
 
@@ -65,7 +54,7 @@ function adminSearch() {
                 </div>';
                 */
                 $(".book-collection-results").append(html);
-            })
+            });
             $(".book-collection-results").slideDown();
         }
     })

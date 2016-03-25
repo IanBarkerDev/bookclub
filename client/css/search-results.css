@@ -1,5 +1,5 @@
 body {
-    background-color: #FFD3AA;    
+    background-color: #E9E2D7;
 }
 
 #main-section {
@@ -10,7 +10,7 @@ body {
     margin: 20px 10px 10px 10px;
     padding: 10px 30px;
     border: 1px inset black;
-    background-color: #69969C;
+    background-color: #6C9082;
 }
 
 .search-result {

@@ -16,7 +16,7 @@ var userSchema = new Schema({
     book_collection: [{book: Number, trade_req: [String]}],
     book_collectionVisible: Boolean,
     isAdmin: Boolean
-})
+});
 
 var User = mongoose.model("User", userSchema);
 

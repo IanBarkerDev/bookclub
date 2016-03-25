@@ -406,7 +406,6 @@ app.get("/book/:ISBN", function(req, res) {
 });
 
 
-//TODO: simplify this down to 1 or 2 routes from 6
 // User searches the global collection via ISBN
 app.post("/user_search/ISBN", function(req, res) {
   var ISBN = req.body.data;
@@ -450,6 +449,34 @@ app.get("/search/results/user/:user", function(req, res) {
     res.render("search-results", {username: req.cookies.username, results: users, book: false});
   })
 });
+
+/*app.post("/user_search", function(req, res) {
+  var type = req.body.type;
+  var data = req.body.data;
+
+  switch(type) {
+    case "ISBN":
+          Book.find({ISBN: data}, function(err, books) {
+            if(err) throw err;
+            res.render("search-results", {username: req.cookies.username, results: books, book: true})
+          });
+          break;
+    case "author":
+          Book.find({"author": new RegExp(data, "i")}, function(err, authors) {
+            if(err) throw err;
+            res.render("search-results", {username: req.cookies.username, results: authors, book: true})
+          });
+          break;
+    case "user":
+          User.find({"username": new RegExp(data, "i")}, function(err, users) {
+            if(err) throw err;
+            console.log(users);
+            res.render("search-results", {username: req.cookies.username, results: users, book: false});
+          });
+          break;
+    default: break;
+  }
+});*/
 
 // User add's a book to their personal collection
 // TODO: make sure user doesn't already own OR when displaying, don't show add button if user owns

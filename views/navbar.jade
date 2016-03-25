@@ -8,11 +8,14 @@ nav.navbar.navbar-default.navbar-fixed-top
                span.icon-bar
                span.icon-bar
                span.icon-bar
-            a.navbar-brand(href="/user/" + username) Book Club
+            a.navbar-brand(href="/") Book Club
          div.navbar-collapse.navbar-right.collapse#main-menu
             ul.nav.navbar-nav
                li
-                  a.btn.btn-default#my-profile-nav(href="/user/" + username) My Profile
+                  if username
+                     a.btn.btn-default#my-profile-nav(href=("/user/" + username)) My Profile
+                  else
+                     a.btn.btn-default#my-profile-nav(href="/") Home
                li.dropdown
                   a.btn.btn-default.dropdown-toggle(href="#", data-toggle="dropdown", role="button", aria-haspopup="true", aria-expanded="false")
                      | Search 
