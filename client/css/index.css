@@ -1,70 +1,119 @@
 body {
+    background-color: #E9E2D7;
+}
+
+header {
+    background-color: #f4f2e9;
+    box-shadow: 0 1px 8px 1px #DCDAD3;
     text-align: center;
-    background-color: #aa4139;
-    color: white;
+    margin-bottom: 100px;
+}
+
+.text-center {
+    text-align: center;
 }
 
 h1 {
-    color: #fff;
-    font-size: 45px;
-    font-weight: 600;
+    font-size: 48px;
+    font-style: italic;
 }
 
 .login-signup-box {
-    margin: 30px 20px;
-    padding: 40px;
-    height: 300px;
-}
-
-.login-signup-links {
-    width: 600px;
-    height: 300px;
-    margin: 15px auto;
-    padding: 50px 0;
+    margin: 10px;
 }
 
 .link {
-    background-color: #ffdfaa;
-    border: none;
-    border-radius: 5px;
-    color: #256f5c;
-    font-size: 40px;
-    margin: 0 5px 0 5px;
-    width: 168px;
+    margin: 5px;
+    font-size: 20px;
 }
 
 .link:hover {
-    background-color: #256f5c;
-    color: #ffdfaa;
+    background-color: #DCDAD3;
+    border: 1px solid #000;
+}
+
+.carousel-body {
+    margin: 40px;
+    text-align: center;
+    background-color: #DFCAAE;
+    border-radius: 6px;
+}
+
+.carousel-body h3 {
+    background-color: #D2B48C;
+    font-size: 30px;
+    border-radius: 6px 6px 0 0;
+    box-shadow: 0 1px 3px 2px #BDA27E;
+    padding: 10px;
+}
+
+.carousel-body .carousel-main {
+    height: 200px;
+    margin: 60px;
+}
+
+.carousel-body .carousel-main .carousel-book {
+    height: 120px;
+    margin: 0 30px;
+    width: 100px;
+    display: none;
+    vertical-align: middle;
+}
+
+.carousel-body .carousel-main .carousel-book.current {
+    display: inline-block;
+}
+
+.carousel-body .carousel-main .carousel-book img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 5px;
+    border-radius: 5px 5px 0 0;
+}
+
+.carousel-body .carousel-main .carousel-book p {
+    height: 20px;
+    width: 100px;
 }
 
 #features {
-    height: 400px;
-    
+    margin: 0 40px 20px 40px;
+    text-align: center;
+    background-color: #DBC3A3;
+    box-shadow: 0 1px 1px 1px #BDA27E;
+    padding: 0;
+    border-radius: 6px;
 }
 
+#features h3 {
+    font-size: 30px;
+    border-radius: 6px 6px 0 0;
+    background-color: #C5AF92;
+    margin: 0;
+    box-shadow: 0 1px 3px 2px #CAB79C;
+    padding: 10px;
+}
 
+#features .row {
+    margin: 20px 0;
+}
 
 .feature {
-    border: none;
-    background-color: #aa6f39;
-    min-height: 200px;
-    padding: 30px;
-    font-size: 17px;
-    
+    text-align: center;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .feature i {
-    margin: 5px auto 25px auto;
     font-size: 40px;
+    margin-bottom: 20px;
 }
 
 footer {
-    width: 200px;
-    margin: 100px auto 0 auto;
-    text-align: center;
-    font-size: 10px;
-    font-style: italic;
+    position: absolute;
+    bottom: 1%;
+    left: 50%;
+    transform: translateX(-50%);
     border-top: 1px solid #000;
-    color: #000;
 }
