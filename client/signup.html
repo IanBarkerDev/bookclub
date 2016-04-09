@@ -12,18 +12,10 @@
         <div class="login-signup-page">
             <h3>Sign Up</h3>
             <form class="form" action="/signup" method="post">
-                <label class="form-label" for="username">Username:</label>
-                <input class="form-input" id="username" type="text" name="username">
-                <br>
-                <label class="form-label" for="email">Email: </label>
-                <input class="form-input" id="email" type="email" name="email">
-                <br>
-                <label class="form-label" for="password">Password:</label>
-                <input class="form-input" id="password" type="password" name="password">
-                <br>
-                <label class="form-label" for="password_con">Confirm:</label>
-                <input class="form-input" id="password_con" type="password" name="password_con">
-                <br>
+                <input class="form-input" id="username" type="text" name="username" placeholder="Username">
+                <input class="form-input" id="email" type="email" name="email" placeholder="Email">
+                <input class="form-input" id="password" type="password" name="password" placeholder="Password">
+                <input class="form-input" id="password_con" type="password" name="password_con" placeholder="Password Confirm">
                 <button type="submit" class="form-submit btn btn-default">Sign Up</button>
             </form>
             <span class="switch" id="to-signup">Already have an account? <a href="/login.html">Log In instead.</a></span>

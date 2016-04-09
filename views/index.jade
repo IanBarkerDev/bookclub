@@ -5,6 +5,7 @@ head
    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js", integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS", crossorigin="anonymous")   script(src="/js/navbar.js")
    link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css")
    link(rel="stylesheet", href="/css/index.css")
+   meta(name="viewport", content="width=device-width, initial-scale=1")
    
    
 body
@@ -18,14 +19,14 @@ body
                a.btn.btn-default.link#signup-button(href="/signup.html") Sign Up
             else
                a.btn.btn-default.link(href="/user/" + username) My Profile
-               a.btn.btn-default.link#logout-button Log Out
+               a.btn.btn-default.link#logout-button(onClick="userLogout()") Log Out
    div.container-fluid
       div.container#carousel
          div.carousel-body
             h3 Own These Books?
             div.carousel-main
                each book in recent
-                  a.carousel-book.current(id=book._id, href="/book/" + book.ISBN)
+                  a.carousel-book(id=book._id, href="/book/" + book.ISBN)
                      img(src=book.img alt=book.title)
                      p= book.title
    div.container-fluid
@@ -46,11 +47,5 @@ body
                i.fa.fa-check
                p.text-center Book collection updated regularly!
    footer
-      p.footer &copy; 2015 Book Club
+      p.footer &copy; 2015 Ian Barker
    script(src="./js/navbar.js")
-   script.
-      $(document).ready(function() {
-          $("#logout-button").on("click", function() {
-             userLogout();
-         })
-      })

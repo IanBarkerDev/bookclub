@@ -1,5 +1,5 @@
 body {
-    background-color: #FFD3AA;    
+    background-color: #E9E2D7;
 }
 
 #change-password {
@@ -35,10 +35,10 @@ body {
 
 .panel .btn-default {
     border: none;
-    background-color: #801e16;
+    background-color: #555479;
     color: #fff !important;
 }
 
 .panel .btn-default:hover {
-    background-color: #d4726a !important;
+    background-color: #3D3C5E !important;
 }

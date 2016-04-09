@@ -12,6 +12,14 @@ body {
 
 #settings {
     float: right;
+    background-color: #555479;
+    color: #fff;
+    border: none;
+    margin: 0 2px;
+}
+
+#settings:hover {
+    background-color: #3D3C5E;
 }
 
 #admin-search-all {
@@ -21,8 +29,9 @@ body {
 .book-collection, .book-collection-render, .book-collection-results {
     margin: 20px 10px 10px 10px;
     padding: 10px 30px;
-    border: 1px inset black;
-    background-color: #6C9082;
+    border: 4px inset #C5BEA8;
+    border-radius: 5px;
+    background-color: #C5BEA8;
 }
 
 .book-collection-results {

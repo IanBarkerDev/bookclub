@@ -1,10 +1,20 @@
 body {
     text-align: center;
-    background-color: #aa4139;
+    background-color: #E9E2D7;
 }
 
-.container {
-    margin: 100px auto 0 auto;
+#login, #signup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    background-color: #EFEFEF;
+    padding: 5px;
+    border: 5px solid #EFEFEF;
+    border-radius: 5px;
+    //-webkit-box-shadow: 0 0 1px 1px #BDA27E;
+    //-moz-box-shadow: 0 0 1px 1px #BDA27E;
+    //box-shadow: 0 0 10px 1px #000;
 }
 
 .login-signup-page {
@@ -19,6 +29,7 @@ h3 {
 form {
     width: 360px;
     margin: 0 auto 10px auto;
+    text-align: center;
 }
 
 .form-label {
@@ -26,44 +37,45 @@ form {
     position: relative;
     margin: 6px 3px 6px 3px;
     float: left;
-    color: #fff;
+    color: #000;
 }
 
 .form-input {
     font-size: 20px;
     margin: 3px 0 3px 3px;
-    float: right;
+    border: 1px solid #DADADA;
+    border-radius: 5px;
+    line-height: 36px;
 }
 
-
-/* this is without bootstrap
-   if using it then adjust accordingly*/
 .form-submit {
     background-color: white;
-    border: 1px solid white;
+    border: 1px solid #DADADA;
     color: black;
     border-radius: 5px;
-    width: 60px;
+    min-width: 128px;
     padding: auto;
-    margin: 5px auto 5px 51px;
+    line-height: 28px;
+    font-size: 18px;
+    margin-top: 10px;
 }
 
 .form-submit:hover {
-    background-color: lightgray;
-    border-color: lightgray;
+    border: 1px solid #000;
     cursor: pointer;
 }
 
 .switch {
     font-size: 20px;
-    color: #fff;
+    color: #000;
 }
 
 .switch a {
-    color: #A5CCCC;
+    color: #000;
+    text-decoration: none;
 }
 
 .switch a:hover {
     text-decoration: underline;
-    color: dodgerblue;
+    color: #003399;
 }

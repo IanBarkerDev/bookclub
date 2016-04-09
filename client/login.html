@@ -3,7 +3,7 @@
 
 <head>
     <title>Log In</title>
-    <link rel="stylesheet" href="/css/login-signup.css">
+    <link rel="stylesheet" href="./css/login-signup.css">
 </head>
 <body>
 <div class="container-fluid" id="login">
@@ -11,12 +11,8 @@
         <div class="login-signup-page">
             <h3>Log In</h3>
             <form class="form" action="/login" method="post">
-                <label class="form-label" for="username">Username:</label>
-                <input class="form-input" id="username" type="text" name="username">
-                <br>
-                <label class="form-label" for="password">Password:</label>
-                <input class="form-input" id="password" type="password" name="password">
-                <br>
+                <input class="form-input" id="username" type="text" name="username" placeholder="Username">
+                <input class="form-input" id="password" type="password" name="password" placeholder="Password">
                 <button type="submit" class="form-submit btn btn-default">Log In</button>
             </form>
             <span class="switch" id="to-signup">Don't have an account yet? <a href="/signup.html">Sign up instead.</a></span>

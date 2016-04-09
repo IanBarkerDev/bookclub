@@ -1,5 +1,7 @@
 body {
     background-color: #E9E2D7;
+    position: relative;
+    min-height: 100vh;
 }
 
 header {
@@ -32,8 +34,13 @@ h1 {
     border: 1px solid #000;
 }
 
+#carousel {
+    margin: auto;
+    padding: 0;
+}
+
 .carousel-body {
-    margin: 40px;
+    margin: 40px auto;
     text-align: center;
     background-color: #DFCAAE;
     border-radius: 6px;
@@ -48,7 +55,7 @@ h1 {
 }
 
 .carousel-body .carousel-main {
-    height: 200px;
+    padding-bottom: 60px;
     margin: 60px;
 }
 
@@ -56,12 +63,8 @@ h1 {
     height: 120px;
     margin: 0 30px;
     width: 100px;
-    display: none;
-    vertical-align: middle;
-}
-
-.carousel-body .carousel-main .carousel-book.current {
     display: inline-block;
+    vertical-align: middle;
 }
 
 .carousel-body .carousel-main .carousel-book img {
@@ -77,7 +80,7 @@ h1 {
 }
 
 #features {
-    margin: 0 40px 20px 40px;
+    margin: 0 auto 20px auto;
     text-align: center;
     background-color: #DBC3A3;
     box-shadow: 0 1px 1px 1px #BDA27E;
@@ -112,8 +115,49 @@ h1 {
 
 footer {
     position: absolute;
-    bottom: 1%;
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     border-top: 1px solid #000;
+}
+
+@media (max-width: 1200px) {
+    footer {
+        bottom: -5%;
+    }
+}
+
+@media (max-width: 1000px) {
+    .carousel-body .carousel-main .carousel-book:nth-child(4), .carousel-body .carousel-main .carousel-book:nth-child(5) {
+        display: none;
+    }
+}
+
+@media (max-width: 650px) {
+    .carousel-body .carousel-main .carousel-book {
+        margin: 5px 15px;
+    }
+    .carousel-body .carousel-main .carousel-book img {
+        width: 70%;
+        height: 70%;
+    }
+}
+
+@media (max-width: 550px) {
+    .carousel-body .carousel-main .carousel-book {
+        display: block;
+        margin: 10px auto;
+    }
+
+    .carousel-body .carousel-main .carousel-book a {
+        margin: 50px;
+    }
+
+    .carousel-body .carousel-main .carousel-book img + a{
+        width: 90%;
+        height: 90%;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+
 }

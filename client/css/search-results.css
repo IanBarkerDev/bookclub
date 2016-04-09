@@ -21,6 +21,7 @@ body {
     padding: 3px;
     position: relative;
     background-color: #e4d2ba;
+    vertical-align: top;
 }
 
 .book-img {
